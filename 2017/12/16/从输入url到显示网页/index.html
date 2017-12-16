@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="第一步：输入URL第二步：浏览器会接受用户所输入的url第三步： 浏览器解析url 根据格式分成几个部分第四步：浏览器通过域名 向dns寻求 找出其对应的IP地址第五步：浏览器向确定的IP和端口号发起网络连接第六步：浏览器根据协议（http）要求，向服务器组织一个请求的数据包里面包含大量请求信息，包括请求的资源路径、你">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从输入 URL 到页面加载完的过程中都发生了什么事情？">
+<meta property="og:url" content="http://yoursite.com/2017/12/16/从输入url到显示网页/index.html">
+<meta property="og:site_name" content="yanyu&#39;s">
+<meta property="og:description" content="第一步：输入URL第二步：浏览器会接受用户所输入的url第三步： 浏览器解析url 根据格式分成几个部分第四步：浏览器通过域名 向dns寻求 找出其对应的IP地址第五步：浏览器向确定的IP和端口号发起网络连接第六步：浏览器根据协议（http）要求，向服务器组织一个请求的数据包里面包含大量请求信息，包括请求的资源路径、你的身份 第七步：facebook服务的永久重定向响应（这样浏览器就 会访问“ht">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-12-16T13:54:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从输入 URL 到页面加载完的过程中都发生了什么事情？">
+<meta name="twitter:description" content="第一步：输入URL第二步：浏览器会接受用户所输入的url第三步： 浏览器解析url 根据格式分成几个部分第四步：浏览器通过域名 向dns寻求 找出其对应的IP地址第五步：浏览器向确定的IP和端口号发起网络连接第六步：浏览器根据协议（http）要求，向服务器组织一个请求的数据包里面包含大量请求信息，包括请求的资源路径、你的身份 第七步：facebook服务的永久重定向响应（这样浏览器就 会访问“ht">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/16/从输入url到显示网页/"/>
+
+
+
+
+
+  <title>从输入 URL 到页面加载完的过程中都发生了什么事情？ | yanyu's</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">yanyu's</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/16/从输入url到显示网页/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yanyuw">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yanyu's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">从输入 URL 到页面加载完的过程中都发生了什么事情？</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-16T21:54:25+08:00">
+                2017-12-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="第一步：输入URL"><a href="#第一步：输入URL" class="headerlink" title="第一步：输入URL"></a>第一步：输入URL</h1><h1 id="第二步：浏览器会接受用户所输入的url"><a href="#第二步：浏览器会接受用户所输入的url" class="headerlink" title="第二步：浏览器会接受用户所输入的url"></a>第二步：浏览器会接受用户所输入的url</h1><h1 id="第三步：-浏览器解析url-根据格式分成几个部分"><a href="#第三步：-浏览器解析url-根据格式分成几个部分" class="headerlink" title="第三步： 浏览器解析url 根据格式分成几个部分"></a>第三步： 浏览器解析url 根据格式分成几个部分</h1><h1 id="第四步：浏览器通过域名-向dns寻求-找出其对应的IP地址"><a href="#第四步：浏览器通过域名-向dns寻求-找出其对应的IP地址" class="headerlink" title="第四步：浏览器通过域名 向dns寻求 找出其对应的IP地址"></a>第四步：浏览器通过域名 向dns寻求 找出其对应的IP地址</h1><h1 id="第五步：浏览器向确定的IP和端口号发起网络连接"><a href="#第五步：浏览器向确定的IP和端口号发起网络连接" class="headerlink" title="第五步：浏览器向确定的IP和端口号发起网络连接"></a>第五步：浏览器向确定的IP和端口号发起网络连接</h1><h1 id="第六步：浏览器根据协议（http）要求，向服务器组织一个请求的数据包"><a href="#第六步：浏览器根据协议（http）要求，向服务器组织一个请求的数据包" class="headerlink" title="第六步：浏览器根据协议（http）要求，向服务器组织一个请求的数据包"></a>第六步：浏览器根据协议（http）要求，向服务器组织一个请求的数据包</h1><p>里面包含大量请求信息，包括请求的资源路径、你的身份</p>
+<h1 id="第七步：facebook服务的永久重定向响应"><a href="#第七步：facebook服务的永久重定向响应" class="headerlink" title="第七步：facebook服务的永久重定向响应"></a>第七步：facebook服务的永久重定向响应</h1><p>（这样浏览器就 会访问“<a href="http://www.facebook.com/”" target="_blank" rel="noopener">http://www.facebook.com/”</a> 而非“<a href="http://facebook.com/”。" target="_blank" rel="noopener">http://facebook.com/”。</a> 重定向：将带3w和不带3w归于同一网站）</p>
+<h1 id="第八步：浏览器跟踪重定向地址"><a href="#第八步：浏览器跟踪重定向地址" class="headerlink" title="第八步：浏览器跟踪重定向地址"></a>第八步：浏览器跟踪重定向地址</h1><h1 id="第九步：服务器“处理”请求，将数据返回给浏览器。"><a href="#第九步：服务器“处理”请求，将数据返回给浏览器。" class="headerlink" title="第九步：服务器“处理”请求，将数据返回给浏览器。"></a>第九步：服务器“处理”请求，将数据返回给浏览器。</h1><p>数据可能是页面的布局、文字。数据也可能是图片、脚本程序等。若资源路径指示的资源不存在，服务器就会返回404错误。</p>
+<h1 id="第十步：浏览器开始显示HTML"><a href="#第十步：浏览器开始显示HTML" class="headerlink" title="第十步：浏览器开始显示HTML"></a>第十步：浏览器开始显示HTML</h1><h1 id="十一：浏览器发送获取嵌入在HTML中的对象"><a href="#十一：浏览器发送获取嵌入在HTML中的对象" class="headerlink" title="十一：浏览器发送获取嵌入在HTML中的对象"></a>十一：浏览器发送获取嵌入在HTML中的对象</h1><p>（根据页面里一些外链的URL，例如图片的地址，按照以上步骤再次发送一个获取请求来重新获得这些文件）</p>
+<h1 id="十二：渲染：开始根据资源的类型，将资源组织成屏幕上显示的图像"><a href="#十二：渲染：开始根据资源的类型，将资源组织成屏幕上显示的图像" class="headerlink" title="十二：渲染：开始根据资源的类型，将资源组织成屏幕上显示的图像"></a>十二：渲染：开始根据资源的类型，将资源组织成屏幕上显示的图像</h1><p>（浏览器将HTML变成人眼看到的图像的过程）</p>
+<h1 id="十三：将渲染好的页面图像显示出来，并开始响应用户的操作。浏览器发送异步（AJAX）请求"><a href="#十三：将渲染好的页面图像显示出来，并开始响应用户的操作。浏览器发送异步（AJAX）请求" class="headerlink" title="十三：将渲染好的页面图像显示出来，并开始响应用户的操作。浏览器发送异步（AJAX）请求"></a>十三：将渲染好的页面图像显示出来，并开始响应用户的操作。浏览器发送异步（AJAX）请求</h1><h1 id="附：部分概念"><a href="#附：部分概念" class="headerlink" title="附：部分概念"></a>附：部分概念</h1><p><strong>URL</strong>：统一资源定位符（或称统一资源定位器/定位地址、URL地址等，俗称为网页地址（网址）；英语：Uniform Resource Locator，缩写URL）如同在网络上的门牌，是因特网上标准的资源的地址。</p>
+<p>统一资源定位符的标准格式如下：<br>　　协议类型:[//服务器地址[:端口号]][/资源层级UNIX文件路径]文件名[?查询][#片段ID]</p>
+<p>统一资源定位符的完整格式如下：<br>　　协议类型:[//[访问资源需要的凭证信息@]服务器地址[:端口号]][/资源层级UNIX文件路径]文件名[?查询][#片段ID]</p>
+<p>其中【访问凭证信息@；:端口号；?查询；#片段ID】都属于选填项。</p>
+<p>例如：<a href="http://www.guokr.com/question/554991/" target="_blank" rel="noopener">http://www.guokr.com/question/554991/</a><br>协议部分：http （从该计算机获取资源的方式，常见的是HTTP、FTP，不同协议有不同的通讯内容格式）<br>网络地址：www.guokr.com （指示该连接网络上哪一台计算机，可以是域名或者IP地址，可以包括端口号）<br>资源路径：/question/554991/ （指示从服务器上获取哪一项资源。）</p>
+<p>加载：根据请求的URL进行域名解析，向服务器发起请求，接收文件（HTML、JS、CSS、图象等）。</p>
+<p>解析：对加载到的资源（HTML、JS、CSS等）进行语法解析，建议相应的内部数据结构（比如HTML的DOM树，JS的（对象）属性表，CSS的样式规则等等）</p>
+<p><strong>渲染</strong>：构建渲染树，对各个元素进行位置计算、样式计算等等，然后根据渲染树对页面进行渲染（可以理解为“画”元素）</p>
+<p>渲染大致分为两部分，一部分是排版，一部分是绘制。排版就是根据文档流，加上浮动、定位等属性，确定各个盒子的位置还有尺寸。绘制就是将css的属性例如字体、背景色、圆角等等按照给定的方式呈现出来。各个浏览器的渲染效率不一样。</p>
+<p><strong>域名和url</strong><br>域名就是到 .com / .net / .org 就结束了<br>URL就是除了域名 还有后面的的/asl;dajs;dlfsdf.html 一长串资源路径</p>
+<p><strong>异步和同步</strong>举个例子：普通B/S模式（同步）AJAX技术（异步） </p>
+<p>同步：提交请求-&gt;等待服务器处理-&gt;处理完毕返回 这个期间客户端浏览器不能干任何事 </p>
+<p>异步: 请求通过事件触发-&gt;服务器处理（这是浏览器仍然可以作其他事情）-&gt;处理完毕 </p>
+<p>同步就是你叫我去吃饭，我听到了就和你去吃饭；如果没有听到，你就不停的叫，直到我告诉你听到了，才一起去吃饭。 </p>
+<p>异步就是你叫我，然后自己去吃饭，我得到消息后可能立即走，也可能等到下班才去吃饭。 </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/16/C语言笔记/" rel="next" title="C语言笔记">
+                <i class="fa fa-chevron-left"></i> C语言笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">yanyuw</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">Kategorien</span>
+                
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一步：输入URL"><span class="nav-number">1.</span> <span class="nav-text">第一步：输入URL</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二步：浏览器会接受用户所输入的url"><span class="nav-number">2.</span> <span class="nav-text">第二步：浏览器会接受用户所输入的url</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第三步：-浏览器解析url-根据格式分成几个部分"><span class="nav-number">3.</span> <span class="nav-text">第三步： 浏览器解析url 根据格式分成几个部分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第四步：浏览器通过域名-向dns寻求-找出其对应的IP地址"><span class="nav-number">4.</span> <span class="nav-text">第四步：浏览器通过域名 向dns寻求 找出其对应的IP地址</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第五步：浏览器向确定的IP和端口号发起网络连接"><span class="nav-number">5.</span> <span class="nav-text">第五步：浏览器向确定的IP和端口号发起网络连接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第六步：浏览器根据协议（http）要求，向服务器组织一个请求的数据包"><span class="nav-number">6.</span> <span class="nav-text">第六步：浏览器根据协议（http）要求，向服务器组织一个请求的数据包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第七步：facebook服务的永久重定向响应"><span class="nav-number">7.</span> <span class="nav-text">第七步：facebook服务的永久重定向响应</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第八步：浏览器跟踪重定向地址"><span class="nav-number">8.</span> <span class="nav-text">第八步：浏览器跟踪重定向地址</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第九步：服务器“处理”请求，将数据返回给浏览器。"><span class="nav-number">9.</span> <span class="nav-text">第九步：服务器“处理”请求，将数据返回给浏览器。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第十步：浏览器开始显示HTML"><span class="nav-number">10.</span> <span class="nav-text">第十步：浏览器开始显示HTML</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#十一：浏览器发送获取嵌入在HTML中的对象"><span class="nav-number">11.</span> <span class="nav-text">十一：浏览器发送获取嵌入在HTML中的对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#十二：渲染：开始根据资源的类型，将资源组织成屏幕上显示的图像"><span class="nav-number">12.</span> <span class="nav-text">十二：渲染：开始根据资源的类型，将资源组织成屏幕上显示的图像</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#十三：将渲染好的页面图像显示出来，并开始响应用户的操作。浏览器发送异步（AJAX）请求"><span class="nav-number">13.</span> <span class="nav-text">十三：将渲染好的页面图像显示出来，并开始响应用户的操作。浏览器发送异步（AJAX）请求</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#附：部分概念"><span class="nav-number">14.</span> <span class="nav-text">附：部分概念</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yanyuw</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
