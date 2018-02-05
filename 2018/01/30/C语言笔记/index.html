@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="页面内边距*{     padding: 0;     margin: 0; } 要用css清除浏览器对页面的默认外边距、内边距。此处*指网页里的所有元素。 更改默认的css盒子模型box-sizing: border-box; 对div设置padding时会把div的宽高撑大。设置css样式box-sizing: b">
+<meta name="description" content="格式输出 %u 十进制无符号整数  %f 单精度浮点型 (float) %lf 双精度浮点型 (double) %s 字符串  %c 单个字符  %p 指针的值  %e 指数形式的浮点数  %x, %X 无符号以十六进制表示的整数  %0 无符号以八进制表示的整数  %g 自动选择合适的表示法 %lld long lo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="重构学而总结">
-<meta property="og:url" content="http://yoursite.com/2017/11/30/重构学而总结/index.html">
+<meta property="og:title" content="C语言笔记">
+<meta property="og:url" content="http://yoursite.com/2018/01/30/C语言笔记/index.html">
 <meta property="og:site_name" content="yanyu&#39;s">
-<meta property="og:description" content="页面内边距*{     padding: 0;     margin: 0; } 要用css清除浏览器对页面的默认外边距、内边距。此处*指网页里的所有元素。 更改默认的css盒子模型box-sizing: border-box; 对div设置padding时会把div的宽高撑大。设置css样式box-sizing: border-box，元素的内边距和边框不再会增加它的宽度。 解释：  box-s">
+<meta property="og:description" content="格式输出 %u 十进制无符号整数  %f 单精度浮点型 (float) %lf 双精度浮点型 (double) %s 字符串  %c 单个字符  %p 指针的值  %e 指数形式的浮点数  %x, %X 无符号以十六进制表示的整数  %0 无符号以八进制表示的整数  %g 自动选择合适的表示法 %lld long long型的整数  printf中%f既可以输出float型又可以输出double型">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-11-30T15:39:00.176Z">
+<meta property="og:updated_time" content="2018-01-30T10:49:39.906Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="重构学而总结">
-<meta name="twitter:description" content="页面内边距*{     padding: 0;     margin: 0; } 要用css清除浏览器对页面的默认外边距、内边距。此处*指网页里的所有元素。 更改默认的css盒子模型box-sizing: border-box; 对div设置padding时会把div的宽高撑大。设置css样式box-sizing: border-box，元素的内边距和边框不再会增加它的宽度。 解释：  box-s">
+<meta name="twitter:title" content="C语言笔记">
+<meta name="twitter:description" content="格式输出 %u 十进制无符号整数  %f 单精度浮点型 (float) %lf 双精度浮点型 (double) %s 字符串  %c 单个字符  %p 指针的值  %e 指数形式的浮点数  %x, %X 无符号以十六进制表示的整数  %0 无符号以八进制表示的整数  %g 自动选择合适的表示法 %lld long long型的整数  printf中%f既可以输出float型又可以输出double型">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/11/30/重构学而总结/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/01/30/C语言笔记/"/>
 
 
 
 
 
-  <title>重构学而总结 | yanyu's</title>
+  <title>C语言笔记 | yanyu's</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/30/重构学而总结/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/30/C语言笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yanyuw">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">重构学而总结</h1>
+          <h1 class="post-title" itemprop="name headline">C语言笔记</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-30T23:39:00+08:00">
-                2017-11-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-30T18:49:39+08:00">
+                2018-01-30
               </time>
             
 
@@ -284,8 +284,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/总结/" itemprop="url" rel="index">
-                    <span itemprop="name">总结</span>
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
                   </a>
                 </span>
 
@@ -321,32 +321,50 @@
       
 
       
-        <h2 id="页面内边距"><a href="#页面内边距" class="headerlink" title="页面内边距"></a>页面内边距</h2><p><code>*{
-    padding: 0;
-    margin: 0;
-}</code></p>
-<p>要用css清除浏览器对页面的默认外边距、内边距。<br>此处*指网页里的所有元素。</p>
-<h2 id="更改默认的css盒子模型"><a href="#更改默认的css盒子模型" class="headerlink" title="更改默认的css盒子模型"></a>更改默认的css盒子模型</h2><p><code>box-sizing: border-box;</code></p>
-<p>对div设置padding时会把div的宽高撑大。设置css样式box-sizing: border-box，元素的内边距和边框不再会增加它的宽度。</p>
-<p>解释：</p>
-<blockquote>
-<p>box-sizing 属性可以被用来调整这些表现:</p>
-<ul>
-<li><code>content-box</code>  是默认值。如果你设置一个元素的宽为100px，那么这个元素的内容区会有100px宽，并且任何边框和内边距的宽度都会被增加到最后绘制出来的元素宽度中。</li>
-<li><code>border-box</code>  告诉浏览器去理解你设置的边框和内边距的值是包含在width内的。也就是说，如果你将一个元素的width设为100px,那么这100px会包含其它的border和padding，内容区的实际宽度会是width减去border + padding的计算值。大多数情况下这使得我们更容易的去设定一个元素的宽高。</li>
+        <h2 id="格式输出"><a href="#格式输出" class="headerlink" title="格式输出"></a>格式输出</h2><ul>
+<li>%u 十进制无符号整数 </li>
+<li>%f 单精度浮点型 (float)</li>
+<li>%lf 双精度浮点型 (double)</li>
+<li>%s 字符串 </li>
+<li>%c 单个字符 </li>
+<li>%p 指针的值 </li>
+<li>%e 指数形式的浮点数 </li>
+<li>%x, %X 无符号以十六进制表示的整数 </li>
+<li>%0 无符号以八进制表示的整数 </li>
+<li>%g 自动选择合适的表示法</li>
+<li>%lld long long型的整数</li>
 </ul>
-</blockquote>
-<p>我觉得将所有的元素的box-sizing都设为border-box 能更好的区别margin和padding属性。</p>
-<h2 id="并排同行显示"><a href="#并排同行显示" class="headerlink" title="并排同行显示"></a>并排同行显示</h2><p><code>display:inline-block</code></p>
-<p>inline-block可以简单理解成inline+block，既可以设置width和height（block），又可以行内排列（inline）</p>
-<p>用它来代替float 更加简单 也能实现相同的效果</p>
-<h2 id="元素垂直对齐方式"><a href="#元素垂直对齐方式" class="headerlink" title="元素垂直对齐方式"></a>元素垂直对齐方式</h2><p><code>vertical-align: top/middle/bottom</code></p>
-<p>即把元素的顶端与行中最高元素的顶端对齐/把元素放置在父元素的中部/把元素的顶端与行中最低的元素的顶端对齐。</p>
-<h2 id="同时设置背景颜色和背景图"><a href="#同时设置背景颜色和背景图" class="headerlink" title="同时设置背景颜色和背景图"></a>同时设置背景颜色和背景图</h2><p><code>background:url(/*背景图片*/)  #000/*背景颜色*/;</code><br>div可以同时设置背景图片和背景颜色<br>图片位于颜色之上，若div宽长小于背景图，则最终看到的是背景图，若超出，则在背景图没覆盖到的地方显示背景颜色</p>
-<h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><p><code>&lt;img src=&quot;&quot;&gt;</code><br><code>background:url()</code></p>
-<p>两种方式img是html标签，background是css样式。<br>插入图片最好还是用本地的吧，上传到图床结果超时被删了orz</p>
-<h2 id="div与span的区别"><a href="#div与span的区别" class="headerlink" title="div与span的区别"></a>div与span的区别</h2><p>div为块元素 而span是行内元素<br>在不对两者设置css宽高时，div占用的位置是一行，而span占用的是文字内容的宽度。</p>
-<p>虽然没有查到为什么，但在对两者设置左边框时，发现div的边框高度会比span的边框高度要长，而span的边框高度和文字高度一样。</p>
+<p>printf中%f既可以输出float型又可以输出double型 float型会被提升为double型 不用%lf<br>scanf中区别%f和%lf</p>
+<hr>
+<h2 id="fgets函数"><a href="#fgets函数" class="headerlink" title="fgets函数"></a>fgets函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">char *  fgets(char * s, int n,FILE *stream);</span><br><span class="line"></span><br><span class="line">eg. fgets(str,n,stdin);</span><br></pre></td></tr></table></figure>
+<p>第一个参数表示存储所得数据的数组；<br>第二个参数表示指明存储数据的大小;（若为n，则从流中读入n-1个字符 fgets空出一个数组元素为’\0’准备）<br>第三个参数表示将要读取的文件流（stdin表示读取键盘输入的数据）；</p>
+<p><strong>fgets会将行末的换行符(‘\n’)读入，导致数组长度会+1</strong></p>
+<p>有遇到fgets将我不需要的第一行数据读入了数组的情况，这时候可以再用一个fgets函数将不需要的数据先读入一个数组，再用fgets读取真正需要的数据。</p>
+<hr>
+<h2 id="跳过不需要的数据"><a href="#跳过不需要的数据" class="headerlink" title="跳过不需要的数据"></a>跳过不需要的数据</h2><p>读取字符可能会把空格读取进去 用<code>scanf(&quot;%d%*c%c&quot;,&amp;n，&amp;c);</code> 可以避免把空格赋值给变量 </p>
+<p><strong>“*”符:用以表示该输入项,读入后不赋予相应的变量，即跳过该输入值。</strong></p>
+<p>例如：输入1 2时 若不用*符，则n为1，c为空格；用*符后 跳过了空格，所以n为1，c为’2’；</p>
+<hr>
+<h2 id="字符串相关的函数"><a href="#字符串相关的函数" class="headerlink" title="字符串相关的函数"></a>字符串相关的函数</h2><p><strong>strlen(a)</strong> 取字符串长度：求字符串a的长度（不包括结束符(‘\0’)）</p>
+<p><strong>strcpy(a, b)</strong> 复制字符串：将b拷贝给a</p>
+<p><strong>strncpy(a, b, n)</strong> 复制指定长度字符串：截取b的n个字符拷贝给a</p>
+<p><strong>strcat(a, b)</strong> 附加字符串：在字符串a之后连接上b</p>
+<p><strong>strncat(a, b, n)</strong> 附加指定长度字符串：从b截取n个字符连接在字符串a之后</p>
+<p><strong>strcmp(a, b)</strong> 比较字符串：根据ASCII码逐个字符比较字符串a、b 当a &lt; b 时 返回负数 当a &gt; b 时 返回正数 <strong>当a == b 时返回0</strong></p>
+<p><strong>strcasecmp(a,b)</strong> 忽略大小写比较字符串</p>
+<p><strong>strncmp(a, b, n)</strong> 比较指定长度字符串 最多比较n个字符</p>
+<p><strong>strchr(a, c)</strong> 从字符串头开始在字符串a中查找指定字符c首次出现的位置 返回指向第一次出现c位置的指针 没有则输出null</p>
+<p><strong>strrchr(a, c)</strong> 从字符串尾开始在字符串a中查找指定字符c首次出现的位置</p>
+<p><strong>strstr(a, b)</strong> 查找字符串：在字符串a中查找字符串b首次出现的位置 没有则返回null 有则从首次发现b字符串处返回a字符 （a的长度必须大于b）</p>
+<hr>
+<p>## </p>
+<hr>
+<h2 id="零碎"><a href="#零碎" class="headerlink" title="零碎"></a>零碎</h2><ul>
+<li>代码块不管几行都用方括号括起来</li>
+<li>数组尽量开大一点（有几题都是因为数组不够大导致答案错误）</li>
+<li>注意判断条件的先后，避免不必要的遍历，减少代码运行量</li>
+<li>先算术运算，后移位运算，最后位运算。</li>
+</ul>
 
       
     </div>
@@ -371,8 +389,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/30/博客你好/" rel="next" title="博客你好">
-                <i class="fa fa-chevron-left"></i> 博客你好
+              <a href="/2018/01/29/css笔记/" rel="next" title="css笔记">
+                <i class="fa fa-chevron-left"></i> css笔记
               </a>
             
           </div>
@@ -381,8 +399,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/12/17/从输入url到显示网页/" rel="prev" title="从输入 URL 到页面加载">
-                从输入 URL 到页面加载 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/02/05/JavaScript笔记/" rel="prev" title="JavaScript笔记">
+                JavaScript笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -508,7 +526,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#页面内边距"><span class="nav-number">1.</span> <span class="nav-text">页面内边距</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更改默认的css盒子模型"><span class="nav-number">2.</span> <span class="nav-text">更改默认的css盒子模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并排同行显示"><span class="nav-number">3.</span> <span class="nav-text">并排同行显示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元素垂直对齐方式"><span class="nav-number">4.</span> <span class="nav-text">元素垂直对齐方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同时设置背景颜色和背景图"><span class="nav-number">5.</span> <span class="nav-text">同时设置背景颜色和背景图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入图片"><span class="nav-number">6.</span> <span class="nav-text">插入图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#div与span的区别"><span class="nav-number">7.</span> <span class="nav-text">div与span的区别</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#格式输出"><span class="nav-number">1.</span> <span class="nav-text">格式输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fgets函数"><span class="nav-number">2.</span> <span class="nav-text">fgets函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跳过不需要的数据"><span class="nav-number">3.</span> <span class="nav-text">跳过不需要的数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串相关的函数"><span class="nav-number">4.</span> <span class="nav-text">字符串相关的函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#零碎"><span class="nav-number">5.</span> <span class="nav-text">零碎</span></a></li></ol></div>
             
 
           </div>

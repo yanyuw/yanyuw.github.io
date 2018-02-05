@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -192,7 +192,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -215,6 +215,732 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/05/JavaScript笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yanyuw">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yanyu's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/05/JavaScript笔记/" itemprop="url">JavaScript笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-05T16:31:11+08:00">
+                2018-02-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="数组Array常用方法"><a href="#数组Array常用方法" class="headerlink" title="数组Array常用方法"></a>数组Array常用方法</h2><h3 id="Array-prototype-pop"><a href="#Array-prototype-pop" class="headerlink" title="Array.prototype.pop()"></a>Array.prototype.pop()</h3><p>pop() 方法将删除 arrayObject 的最后一个元素，把数组长度减 1，<strong>并且返回它删除的元素的值</strong>。如果数组已经为空，则 pop() 不改变数组，并返回 undefined 值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arrayObject.pop()</span><br></pre></td></tr></table></figure></p>
+<h3 id="Array-prototype-unshift"><a href="#Array-prototype-unshift" class="headerlink" title="Array.prototype.unshift()"></a>Array.prototype.unshift()</h3><p>将一个或多个元素添加到数组的开头，并返回新数组的长度。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.unshift(element1, ..., elementN)</span><br></pre></td></tr></table></figure></p>
+<h3 id="Array-prototype-concat"><a href="#Array-prototype-concat" class="headerlink" title="Array.prototype.concat()"></a>Array.prototype.concat()</h3><p>方法用于合并两个或多个数组。此方法不会更改现有数组，而是<strong>返回一个新数组。</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var new_array = old_array.concat(value1[, value2[, ...[, valueN]]])</span><br></pre></td></tr></table></figure></p>
+<h3 id="Array-prototype-slice"><a href="#Array-prototype-slice" class="headerlink" title="Array.prototype.slice()"></a>Array.prototype.slice()</h3><p>可从已有的数组中返回选定的元素。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arrayObject.slice(start,end)</span><br></pre></td></tr></table></figure></p>
+<h3 id="Array-prototype-forEach"><a href="#Array-prototype-forEach" class="headerlink" title="Array.prototype.forEach()"></a>Array.prototype.forEach()</h3><p>返回新数组而不会改变原数组，且不会对空数组进行检测</p>
+<h3 id="Array-prototype-map"><a href="#Array-prototype-map" class="headerlink" title="Array.prototype.map()"></a>Array.prototype.map()</h3><p>对原数组的每个元素都按顺序执行一次callback函数，并返回每次执行函数的返回值所组成的新数组（包括undefined）</p>
+<p>**callback函数只会在有值的索引上被调用，没有赋过值或使用delete删除的索引则不会被调用<br>返回新数组而不会改变原数组，且不会对空数组进行检测</p>
+<h3 id="Array-prototype-filter"><a href="#Array-prototype-filter" class="headerlink" title="Array.prototype.filter()"></a>Array.prototype.filter()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array.filter(function(**currentValue**,index,arr), thisValue)</span><br></pre></td></tr></table></figure>
+<p>currentValue：当前元素的值<br>index：当前元素的索引值<br>返回新数组而不会改变原数组，且不会对空数组进行检测</p>
+<h3 id="Array-prototype-reduce"><a href="#Array-prototype-reduce" class="headerlink" title="Array.prototype.reduce()"></a>Array.prototype.reduce()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array.reduce(function(**total**, **currentValue**, currentIndex, arr), initialValue)</span><br></pre></td></tr></table></figure>
+<p>total：初始值 或计算结束后的返回值<br>currentValue：当前元素<br>currentIndex</p>
+<h3 id="Array-from"><a href="#Array-from" class="headerlink" title="Array.from()"></a>Array.from()</h3><p>可以将数组空元素设为undefined</p>
+<h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><ul>
+<li>在所有函数之外声明的变量，叫做<strong>全局变量</strong> 它可被当前文档中的任何其他代码所访问。</li>
+<li>在函数内部声明的变量，叫做<strong>局部变量</strong>，只能在该函数内部访问。</li>
+</ul>
+<p>用 var 或 let 声明的且未赋初值的变量，值会被设定为 undefined。数值类型环境中 undefined 值会被转换为 NaN。<br>const创建只读的常量，必须被初始化为某个值。（对象属性不受保护，仍可以通过赋值改变）</p>
+<h3 id="var"><a href="#var" class="headerlink" title="var"></a>var</h3><p>声明顺序没有关系，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(&quot;The value of c is &quot; + c);  // The value of c is undefined</span><br><span class="line">var c;</span><br></pre></td></tr></table></figure></p>
+<h3 id="let"><a href="#let" class="headerlink" title="let"></a>let</h3><p>与顺序有关，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(&quot;The value of x is &quot; + x); // Uncaught ReferenceError: x is not defined </span><br><span class="line">let x;</span><br></pre></td></tr></table></figure></p>
+<h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h2><p>__proto<strong>（隐式原型）与prototype（显式原型）<br>一个对象的隐式原型指向构造该对象的构造函数的原型<br>1.对象有属性</strong>proto<strong>,指向该对象的构造函数的原型对象。<br>2.方法除了有属性</strong>proto__,还有属性prototype，prototype指向该方法的原型对象。</p>
+<p>所有实例对象需要共享的属性和方法，都放在prototype对象里面；那些不需要共享的属性和方法，就放在构造函数里面。</p>
+<p>实例对象一旦创建，将自动引用prototype对象的属性和方法。也就是说，实例对象的属性和方法，分成两种，一种是本地的，另一种是引用的。</p>
+<p>关于原型：</p>
+<ul>
+<li><a href="http://www.ruanyifeng.com/blog/2011/06/designing_ideas_of_inheritance_mechanism_in_javascript.html" target="_blank" rel="noopener">JavaScript继承机制的设计思想</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/23090041?refer=study-fe" target="_blank" rel="noopener">什么是JS原型链</a></li>
+</ul>
+<h2 id="构造函数（constructor）"><a href="#构造函数（constructor）" class="headerlink" title="构造函数（constructor）"></a>构造函数（constructor）</h2><p>所谓”构造函数”，其实就是一个普通函数，但是内部使用了<strong>this</strong>变量。对构造函数使用<strong>new</strong>运算符，就能生成实例，并且<strong>this</strong>变量会绑定在实例对象上。</p>
+<h2 id="Object-defineProperty"><a href="#Object-defineProperty" class="headerlink" title="Object.defineProperty()"></a>Object.defineProperty()</h2><p>方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object.defineProperty(obj, prop, descriptor)</span><br></pre></td></tr></table></figure></p>
+<p>obj:<br>要在其上定义属性的对象。<br>prop:<br>要定义或修改的属性的名称。<br>descriptor:<br>将被定义或修改的属性描述符。</p>
+<p>默认情况下，使用Object.defineProperty()添加的属性值是<strong>不可变</strong>(不可配置属性)的。<br>descriptor的参数：<br><strong>注意</strong> 在调用Object.defineProperty()方法时，如果不指定， configurable， enumerable， writable特性的默认值都是false,这跟对于直接在对象上定义的属性，这个特性默认值为为 true 并不冲突<br><a href="http://imweb.io/topic/56d40adc0848801a4ba198ce" target="_blank" rel="noopener">不会Object.defineProperty你就out了</a></p>
+<h2 id="Object-getPrototypeOf"><a href="#Object-getPrototypeOf" class="headerlink" title="Object.getPrototypeOf()"></a>Object.getPrototypeOf()</h2><p>方法返回指定对象的原型（内部[[Prototype]]属性的值） 如果没有继承属性 则返回null<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object.getPrototypeOf(object)</span><br></pre></td></tr></table></figure></p>
+<p>obj：要返回其原型的对象</p>
+<p><code>Object.getPrototypeOf( Object ) === Function.prototype; //true</code></p>
+<h2 id="Object-create"><a href="#Object-create" class="headerlink" title="Object.create()"></a>Object.create()</h2><p>方法会使用指定的原型对象及其属性去创建一个新的对象。并返回在指定原型对象上添加新属性后的对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object.create(proto[, propertiesObject])</span><br></pre></td></tr></table></figure></p>
+<p>proto:<br>新创建对象的原型对象。<br>propertiesObject:<br>可选。如果没有指定为 undefined，则是要添加到新创建对象的可枚举属性（即其自身定义的属性，而不是其原型链上的枚举属性）对象的属性描述符以及相应的属性名称。这些属性对应Object.defineProperties()的第二个参数。</p>
+<h2 id="apply-call"><a href="#apply-call" class="headerlink" title="apply call"></a>apply call</h2><p>实现对象继承 为了动态改变this<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">obj.call(thisObj, arg1, arg2, ...);</span><br><span class="line">obj.apply(thisObj, [arg1, arg2, ...]);</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>猫吃鱼，狗吃肉，奥特曼打小怪兽。<br>有天狗想吃鱼了<br>猫.吃鱼.call(狗，鱼)<br>狗就吃到鱼了<br>猫成精了，想打怪兽<br>奥特曼.打小怪兽.call(猫，小怪兽) </p>
+</blockquote>
+<h2 id="Function-prototype-bind"><a href="#Function-prototype-bind" class="headerlink" title="Function.prototype.bind()"></a>Function.prototype.bind()</h2><p>创建一个新的函数, 当被调用时，将其this关键字设置为提供的值，在调用新函数时，在任何提供之前提供一个给定的参数序列。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fun.bind(thisArg[, arg1[, arg2[, ...]]])</span><br></pre></td></tr></table></figure></p>
+<p>thisArg：当绑定函数被调用时，该参数会作为原函数运行时的 this 指向。当使用new 操作符调用绑定函数时，该参数无效。<br>arg1, arg2, …：当绑定函数被调用时，这些参数将置于实参之前传递给被绑定的方法。</p>
+<h2 id="delete操作符"><a href="#delete操作符" class="headerlink" title="delete操作符"></a>delete操作符</h2><p>用于删除对象的某个属性。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">delete object.property </span><br><span class="line">delete object[&apos;property&apos;]</span><br></pre></td></tr></table></figure></p>
+<p>返回值：对于所有情况都是true，除非属性是一个自己的不可配置属性，在这种情况下，非严格模式返回 false。</p>
+<ul>
+<li>如果你删除的属性在对象上不存在，那么delete将不会起作用，但仍会返回true</li>
+<li>如果 delete 操作符删除成功，则被删除的属性将从所属的对象上彻底消失。然后，如果该对象的原型链上有一个同名属性，则该对象会从原型链上继承该同名属性。（也就是说delete操作只会在自身的属性上起作用）</li>
+<li>当一个属性被设置为不可设置，delete操作将不会有任何效果，并且会返回false。如Object.defineProperty(obj, prop, descriptor)</li>
+<li>当你删除一个数组元素时，数组的 length 属性并不会变小。即便你删除了数组的最后一个元素也是如此。</li>
+</ul>
+<h2 id="String-prototype-split"><a href="#String-prototype-split" class="headerlink" title="String.prototype.split()"></a>String.prototype.split()</h2><p>使用指定的分隔符字符串将一个String对象分割成字符串数组，以将字符串分隔为子字符串，以确定每个拆分的位置。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">str.split([separator[, limit]])</span><br><span class="line">//如果空字符串(&quot;&quot;)被用作分隔符，则字符串会在每个字符之间分割。</span><br></pre></td></tr></table></figure></p>
+<p>separator:<br>指定表示每个拆分应发生的点的字符串。可以是一个字符串或正则表达式。 如果纯文本分隔符包含多个字符，则必须找到整个字符串来表示分割点。如果在str中省略或不出现分隔符，则返回的数组包含一个由整个字符串组成的元素。<br>示例： <code>Webkit Moz O ms Khtml&quot;.split( &quot; &quot; )   // [&quot;Webkit&quot;, &quot;Moz&quot;, &quot;O&quot;, &quot;ms&quot;, &quot;Khtml&quot;]</code></p>
+<h2 id="可枚举属性-不可枚举属性"><a href="#可枚举属性-不可枚举属性" class="headerlink" title="可枚举属性 不可枚举属性"></a>可枚举属性 不可枚举属性</h2><ul>
+<li><a href="https://www.w3cplus.com/javascript/how-do-i-enumerate-the-properties-of-a-javascript-object.html" target="_blank" rel="noopener">对象属性的枚举</a></li>
+</ul>
+<p>如果使用直接赋值的方式创建对象的属性，则这个属性的enumerable为true</p>
+<ul>
+<li><a href="https://robin-front.github.io/2017/01/13/how-to-enumerate-object-properties/" target="_blank" rel="noopener">js遍历Object对象可枚举属性、不可枚举属性、原型链属性和自身属性</a></li>
+</ul>
+<h2 id="Object-keys"><a href="#Object-keys" class="headerlink" title="Object.keys()"></a>Object.keys()</h2><p>返回一个由一个给定对象的自身可枚举属性组成的数组，数组中属性名的排列顺序和使用 for…in 循环遍历该对象时返回的顺序一致 （两者的主要区别是 for-in 循环还会枚举其原型链上的属性）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object.keys(obj)</span><br></pre></td></tr></table></figure></p>
+<!-- ## 箭头函数
+ -->
+<!-- 
+## Map
+保存键值对。任何值(对象或者原始值) 都可以作为一个键或一个值。
+
+> 键值对:Key-Value
+> 键：就是存的值的编号
+> 值：就是要存放的数据 -->
+<h2 id="扩展运算符…"><a href="#扩展运算符…" class="headerlink" title="扩展运算符…"></a>扩展运算符…</h2><p>将一个数组转为用逗号分隔的参数序列。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myFunction(...iterableObj);</span><br></pre></td></tr></table></figure>
+<h2 id="迭代器和生成器"><a href="#迭代器和生成器" class="headerlink" title="迭代器和生成器"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Iterators_and_Generators" target="_blank" rel="noopener">迭代器和生成器</a></h2><h3 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h3><p>迭代器是一个对象，它提供了一个next() 方法，用来返回序列中的下一项。这个方法返回包含两个属性：done和 value。</p>
+<h3 id="生成器generator"><a href="#生成器generator" class="headerlink" title="生成器generator"></a>生成器generator</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function*  // 生成一个生成器函数</span><br></pre></td></tr></table></figure>
+<p>yield 使生成器函数执行暂停，将后面的表达式的值返回给生成器的调用者。它可以被认为是一个基于生成器的版本的return关键字。yield* 表达式用于委托给另一个generator 或可迭代对象。</p>
+<h2 id="循环-递归-迭代-遍历"><a href="#循环-递归-迭代-遍历" class="headerlink" title="循环 递归 迭代 遍历"></a><a href="https://segmentfault.com/q/1010000000199577" target="_blank" rel="noopener">循环 递归 迭代 遍历</a></h2><ul>
+<li>循环(loop) - 最基础的概念, 所有重复的行为</li>
+<li>递归(recursion) - 在函数内调用自身, 将复杂情况逐步转化成基本情况</li>
+<li>(数学)迭代(iterate) - 在多次循环中逐步接近结果</li>
+<li>(编程)迭代(iterate) - 按顺序访问线性结构中的每一项</li>
+<li>遍历(traversal) - 按规则访问非线性结构中的每一项</li>
+</ul>
+<h2 id="零碎"><a href="#零碎" class="headerlink" title="零碎"></a>零碎</h2><ul>
+<li>NaN == NaN false 不等于它本身</li>
+<li>当你想测试一个变量是否有效值 和null比较 </li>
+<li>=== 严格相等 类型不同false </li>
+<li>|| 运算符 当左边结果true时 返回左边的值 否则返回右边的值<br>&lt;!– if (x == 10) x += 5</li>
+</ul>
+<p>如果传入的x是字符串’10’，x的结果会变成’105’。在后续运算中字符串’105’又可能被转型，从而引入隐蔽的错误。 –&gt;</p>
+<ul>
+<li><a href="http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_encapsulation.html" target="_blank" rel="noopener">Javascript 面向对象编程（一）：封装</a></li>
+<li>一个构建函数通常是大写字母开头，这样便于区分构建函数和普通函数。</li>
+<li><a href="https://codient.blogspot.com/2015/11/laying-out-table-eloquent-javascript.html" target="_blank" rel="noopener">Laying Out A table: Eloquent JavaScript</a></li>
+</ul>
+<!-- +
+```
+var a = new Array(10);
+console.log(a); //(10) [empty × 10]
+``` -->
+<ul>
+<li>undefined与空槽不同 length把空槽算进去</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/30/C语言笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yanyuw">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yanyu's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/30/C语言笔记/" itemprop="url">C语言笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-30T18:49:39+08:00">
+                2018-01-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="格式输出"><a href="#格式输出" class="headerlink" title="格式输出"></a>格式输出</h2><ul>
+<li>%u 十进制无符号整数 </li>
+<li>%f 单精度浮点型 (float)</li>
+<li>%lf 双精度浮点型 (double)</li>
+<li>%s 字符串 </li>
+<li>%c 单个字符 </li>
+<li>%p 指针的值 </li>
+<li>%e 指数形式的浮点数 </li>
+<li>%x, %X 无符号以十六进制表示的整数 </li>
+<li>%0 无符号以八进制表示的整数 </li>
+<li>%g 自动选择合适的表示法</li>
+<li>%lld long long型的整数</li>
+</ul>
+<p>printf中%f既可以输出float型又可以输出double型 float型会被提升为double型 不用%lf<br>scanf中区别%f和%lf</p>
+<hr>
+<h2 id="fgets函数"><a href="#fgets函数" class="headerlink" title="fgets函数"></a>fgets函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">char *  fgets(char * s, int n,FILE *stream);</span><br><span class="line"></span><br><span class="line">eg. fgets(str,n,stdin);</span><br></pre></td></tr></table></figure>
+<p>第一个参数表示存储所得数据的数组；<br>第二个参数表示指明存储数据的大小;（若为n，则从流中读入n-1个字符 fgets空出一个数组元素为’\0’准备）<br>第三个参数表示将要读取的文件流（stdin表示读取键盘输入的数据）；</p>
+<p><strong>fgets会将行末的换行符(‘\n’)读入，导致数组长度会+1</strong></p>
+<p>有遇到fgets将我不需要的第一行数据读入了数组的情况，这时候可以再用一个fgets函数将不需要的数据先读入一个数组，再用fgets读取真正需要的数据。</p>
+<hr>
+<h2 id="跳过不需要的数据"><a href="#跳过不需要的数据" class="headerlink" title="跳过不需要的数据"></a>跳过不需要的数据</h2><p>读取字符可能会把空格读取进去 用<code>scanf(&quot;%d%*c%c&quot;,&amp;n，&amp;c);</code> 可以避免把空格赋值给变量 </p>
+<p><strong>“*”符:用以表示该输入项,读入后不赋予相应的变量，即跳过该输入值。</strong></p>
+<p>例如：输入1 2时 若不用*符，则n为1，c为空格；用*符后 跳过了空格，所以n为1，c为’2’；</p>
+<hr>
+<h2 id="字符串相关的函数"><a href="#字符串相关的函数" class="headerlink" title="字符串相关的函数"></a>字符串相关的函数</h2><p><strong>strlen(a)</strong> 取字符串长度：求字符串a的长度（不包括结束符(‘\0’)）</p>
+<p><strong>strcpy(a, b)</strong> 复制字符串：将b拷贝给a</p>
+<p><strong>strncpy(a, b, n)</strong> 复制指定长度字符串：截取b的n个字符拷贝给a</p>
+<p><strong>strcat(a, b)</strong> 附加字符串：在字符串a之后连接上b</p>
+<p><strong>strncat(a, b, n)</strong> 附加指定长度字符串：从b截取n个字符连接在字符串a之后</p>
+<p><strong>strcmp(a, b)</strong> 比较字符串：根据ASCII码逐个字符比较字符串a、b 当a &lt; b 时 返回负数 当a &gt; b 时 返回正数 <strong>当a == b 时返回0</strong></p>
+<p><strong>strcasecmp(a,b)</strong> 忽略大小写比较字符串</p>
+<p><strong>strncmp(a, b, n)</strong> 比较指定长度字符串 最多比较n个字符</p>
+<p><strong>strchr(a, c)</strong> 从字符串头开始在字符串a中查找指定字符c首次出现的位置 返回指向第一次出现c位置的指针 没有则输出null</p>
+<p><strong>strrchr(a, c)</strong> 从字符串尾开始在字符串a中查找指定字符c首次出现的位置</p>
+<p><strong>strstr(a, b)</strong> 查找字符串：在字符串a中查找字符串b首次出现的位置 没有则返回null 有则从首次发现b字符串处返回a字符 （a的长度必须大于b）</p>
+<hr>
+<p>## </p>
+<hr>
+<h2 id="零碎"><a href="#零碎" class="headerlink" title="零碎"></a>零碎</h2><ul>
+<li>代码块不管几行都用方括号括起来</li>
+<li>数组尽量开大一点（有几题都是因为数组不够大导致答案错误）</li>
+<li>注意判断条件的先后，避免不必要的遍历，减少代码运行量</li>
+<li>先算术运算，后移位运算，最后位运算。</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/29/css笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yanyuw">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yanyu's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/29/css笔记/" itemprop="url">css笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-29T16:40:19+08:00">
+                2018-01-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="去除浏览器默认间距"><a href="#去除浏览器默认间距" class="headerlink" title="去除浏览器默认间距"></a>去除浏览器默认间距</h2><p>*<br>{<br>    padding:0;<br>    margin:0;<br>}</p>
+<hr>
+<h2 id="a标签"><a href="#a标签" class="headerlink" title="a标签"></a>a标签</h2><p>a:link {color: #FF0000}     /<em> 未访问的链接 </em>/<br>a:visited {color: #00FF00}  /<em> 已访问的链接 </em>/<br>a:hover {color: #FF00FF}    /<em> 当有鼠标悬停在链接上 </em>/<br>a:active {color: #0000FF}   /<em> 被选择的链接 </em>/</p>
+<h3 id="去除链接下划线"><a href="#去除链接下划线" class="headerlink" title="去除链接下划线"></a>去除链接下划线</h3><p>a<br>{<br>    text-decoration: none;<br>}</p>
+<hr>
+<h2 id="position"><a href="#position" class="headerlink" title="position"></a>position</h2><p>一般来说<br>父元素 position:relative;<br>子元素 position:absolute;</p>
+<hr>
+<h2 id="背景图"><a href="#背景图" class="headerlink" title="背景图"></a>背景图</h2><p><code>background-image:url(&#39;文件名&#39;);</code></p>
+<p>  不用单引号也可以；</p>
+<hr>
+<h2 id="input"><a href="#input" class="headerlink" title="input"></a>input</h2><p><code>outline:medium;  /* 去除点击时出现的边框 */</code></p>
+<hr>
+<h2 id="零碎"><a href="#零碎" class="headerlink" title="零碎"></a>零碎</h2><ul>
+<li>相同的部分用同一个class写样式 不同的再另一class写</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/29/PAT 总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yanyuw">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yanyu's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/29/PAT 总结/" itemprop="url">PAT 总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-29T16:40:17+08:00">
+                2018-01-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/总结/" itemprop="url" rel="index">
+                    <span itemprop="name">总结</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>刷完pat了！ 但是感觉很多题目没有总结经验，所以觉得再看一遍代码整理一下</p>
+<p>##PAT 1001</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -258,7 +984,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-17T10:48:40+08:00">
                 2017-12-17
@@ -279,7 +1005,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -392,190 +1118,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/17/C语言笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yanyuw">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="yanyu's">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/17/C语言笔记/" itemprop="url">C语言笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-17T10:32:00+08:00">
-                2017-12-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="格式输出"><a href="#格式输出" class="headerlink" title="格式输出"></a>格式输出</h2><ul>
-<li>%u 十进制无符号整数 </li>
-<li>%f 单精度浮点型 (float)</li>
-<li>%lf 双精度浮点型 (double)</li>
-<li>%s 字符串 </li>
-<li>%c 单个字符 </li>
-<li>%p 指针的值 </li>
-<li>%e 指数形式的浮点数 </li>
-<li>%x, %X 无符号以十六进制表示的整数 </li>
-<li>%0 无符号以八进制表示的整数 </li>
-<li>%g 自动选择合适的表示法</li>
-<li>%lld long long型的整数</li>
-</ul>
-<p>printf中%f既可以输出float型又可以输出double型 float型会被提升为double型 不用%lf<br>scanf中区别%f和%lf</p>
-<hr>
-<h2 id="fgets函数"><a href="#fgets函数" class="headerlink" title="fgets函数"></a>fgets函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">char *  fgets(char * s, int n,FILE *stream);</span><br><span class="line"></span><br><span class="line">eg. fgets(str,n,stdin);</span><br></pre></td></tr></table></figure>
-<p>第一个参数表示存储所得数据的数组；<br>第二个参数表示指明存储数据的大小;（若为n，则从流中读入n-1个字符 fgets空出一个数组元素为’\0’准备）<br>第三个参数表示将要读取的文件流（stdin表示读取键盘输入的数据）；</p>
-<p><strong>fgets会将行末的换行符(‘\n’)读入，导致数组长度会+1</strong></p>
-<p>有遇到fgets将我不需要的第一行数据读入了数组的情况，这时候可以再用一个fgets函数将不需要的数据先读入一个数组，再用fgets读取真正需要的数据。</p>
-<hr>
-<h2 id="跳过不需要的数据"><a href="#跳过不需要的数据" class="headerlink" title="跳过不需要的数据"></a>跳过不需要的数据</h2><p>读取字符可能会把空格读取进去 用<code>scanf(&quot;%d%*c%c&quot;,&amp;n，&amp;c);</code> 可以避免把空格赋值给变量 </p>
-<p><strong>“*”符:用以表示该输入项,读入后不赋予相应的变量，即跳过该输入值。</strong></p>
-<p>例如：输入1 2时 若不用*符，则n为1，c为空格；用*符后 跳过了空格，所以n为1，c为’2’；</p>
-<hr>
-<h2 id="字符串相关的函数"><a href="#字符串相关的函数" class="headerlink" title="字符串相关的函数"></a>字符串相关的函数</h2><p><strong>strlen(a)</strong> 取字符串长度：求字符串a的长度（不包括结束符(‘\0’)）</p>
-<p><strong>strcpy(a, b)</strong> 复制字符串：将b拷贝给a</p>
-<p><strong>strncpy(a, b, n)</strong> 复制指定长度字符串：截取b的n个字符拷贝给a</p>
-<p><strong>strcat(a, b)</strong> 附加字符串：在字符串a之后连接上b</p>
-<p><strong>strncat(a, b, n)</strong> 附加指定长度字符串：从b截取n个字符连接在字符串a之后</p>
-<p><strong>strcmp(a, b)</strong> 比较字符串：根据ASCII码逐个字符比较字符串a、b 当a &lt; b 时 返回负数 当a &gt; b 时 返回正数 <strong>当a == b 时返回0</strong></p>
-<p><strong>strcasecmp(a,b)</strong> 忽略大小写比较字符串</p>
-<p><strong>strncmp(a, b, n)</strong> 比较指定长度字符串 最多比较n个字符</p>
-<p><strong>strchr(a, c)</strong> 从字符串头开始在字符串a中查找指定字符c首次出现的位置 返回指向第一次出现c位置的指针 没有则输出null</p>
-<p><strong>strrchr(a, c)</strong> 从字符串尾开始在字符串a中查找指定字符c首次出现的位置</p>
-<p><strong>strstr(a, b)</strong> 查找字符串：在字符串a中查找字符串b首次出现的位置 没有则返回null 有则从首次发现b字符串处返回a字符 （a的长度必须大于b）</p>
-<hr>
-<p>## </p>
-<hr>
-<h2 id="零碎"><a href="#零碎" class="headerlink" title="零碎"></a>零碎</h2><ul>
-<li>代码块不管几行都用方括号括起来</li>
-<li>数组尽量开大一点（有几题都是因为数组不够大导致答案错误）</li>
-<li>注意判断条件的先后，避免不必要的遍历，减少代码运行量</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/30/重构学而总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -605,7 +1147,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-30T23:39:00+08:00">
                 2017-11-30
@@ -626,7 +1168,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -772,7 +1314,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-30T22:34:57+08:00">
                 2017-11-30
@@ -793,7 +1335,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -915,7 +1457,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-30T22:34:57+08:00">
                 2017-11-30
@@ -936,7 +1478,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1040,162 +1582,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/30/css笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yanyuw">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="yanyu's">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/30/css笔记/" itemprop="url">css笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-30T22:34:57+08:00">
-                2017-11-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="去除浏览器默认间距"><a href="#去除浏览器默认间距" class="headerlink" title="去除浏览器默认间距"></a>去除浏览器默认间距</h2><p>*<br>{<br>    padding:0;<br>    margin:0;<br>}</p>
-<hr>
-<h2 id="a标签"><a href="#a标签" class="headerlink" title="a标签"></a>a标签</h2><p>a:link {color: #FF0000}     /<em> 未访问的链接 </em>/<br>a:visited {color: #00FF00}  /<em> 已访问的链接 </em>/<br>a:hover {color: #FF00FF}    /<em> 当有鼠标悬停在链接上 </em>/<br>a:active {color: #0000FF}   /<em> 被选择的链接 </em>/</p>
-<h3 id="去除链接下划线"><a href="#去除链接下划线" class="headerlink" title="去除链接下划线"></a>去除链接下划线</h3><p>a<br>{<br>    text-decoration: none;<br>}</p>
-<hr>
-<h2 id="position"><a href="#position" class="headerlink" title="position"></a>position</h2><p>一般来说<br>父元素 position:relative;<br>子元素 position:absolute;</p>
-<hr>
-<h2 id="背景图"><a href="#背景图" class="headerlink" title="背景图"></a>背景图</h2><p><code>background-image:url(&#39;文件名&#39;);</code></p>
-<p>  不用单引号也可以；</p>
-<hr>
-<h2 id="input"><a href="#input" class="headerlink" title="input"></a>input</h2><p><code>outline:medium;  /* 去除点击时出现的边框 */</code></p>
-<hr>
-<h2 id="零碎"><a href="#零碎" class="headerlink" title="零碎"></a>零碎</h2><ul>
-<li>相同的部分用同一个class写样式 不同的再另一class写</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/29/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1225,7 +1611,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-29T22:55:32+08:00">
                 2017-11-29
@@ -1357,8 +1743,8 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
             
@@ -1369,7 +1755,7 @@
               <div class="site-state-item site-state-categories">
                 
                   <span class="site-state-item-count">3</span>
-                  <span class="site-state-item-name">categories</span>
+                  <span class="site-state-item-name">Kategorien</span>
                 
               </div>
             
@@ -1409,7 +1795,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -1419,7 +1805,7 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
