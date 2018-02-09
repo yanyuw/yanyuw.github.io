@@ -260,7 +260,7 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-05T16:31:11+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-05T17:26:35+08:00">
                 2018-02-05
               </time>
             
@@ -349,7 +349,7 @@
 <li><a href="http://www.ruanyifeng.com/blog/2011/06/designing_ideas_of_inheritance_mechanism_in_javascript.html" target="_blank" rel="noopener">JavaScript继承机制的设计思想</a></li>
 <li><a href="https://zhuanlan.zhihu.com/p/23090041?refer=study-fe" target="_blank" rel="noopener">什么是JS原型链</a></li>
 </ul>
-<h2 id="构造函数（constructor）"><a href="#构造函数（constructor）" class="headerlink" title="构造函数（constructor）"></a>构造函数（constructor）</h2><p>所谓”构造函数”，其实就是一个普通函数，但是内部使用了<strong>this</strong>变量。对构造函数使用<strong>new</strong>运算符，就能生成实例，并且<strong>this</strong>变量会绑定在实例对象上。</p>
+<h2 id="构造函数（constructor）"><a href="#构造函数（constructor）" class="headerlink" title="构造函数（constructor）"></a>构造函数（constructor）</h2><p>所谓”构造函数”，其实就是一个普通函数，但是内部使用了<strong>this</strong>变量。对构造函数使用<strong>new</strong>运算符，就能生成实例，并且<strong>this</strong>变量会绑定在实例对象上。<br>构造函数不需要返回值。<br>使用new来创建对象(调用构造函数)时，如果return的是非对象(数字、字符串、布尔类型等)会忽而略返回值;如果return的是对象，则返回该对象。（Js lab 第2题）</p>
 <h2 id="Object-defineProperty"><a href="#Object-defineProperty" class="headerlink" title="Object.defineProperty()"></a>Object.defineProperty()</h2><p>方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object.defineProperty(obj, prop, descriptor)</span><br></pre></td></tr></table></figure></p>
 <p>obj:<br>要在其上定义属性的对象。<br>prop:<br>要定义或修改的属性的名称。<br>descriptor:<br>将被定义或修改的属性描述符。</p>
 <p>默认情况下，使用Object.defineProperty()添加的属性值是<strong>不可变</strong>(不可配置属性)的。<br>descriptor的参数：<br><strong>注意</strong> 在调用Object.defineProperty()方法时，如果不指定， configurable， enumerable， writable特性的默认值都是false,这跟对于直接在对象上定义的属性，这个特性默认值为为 true 并不冲突<br><a href="http://imweb.io/topic/56d40adc0848801a4ba198ce" target="_blank" rel="noopener">不会Object.defineProperty你就out了</a></p>
