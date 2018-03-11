@@ -82,11 +82,11 @@
 <meta name="description" content="数组Array常用方法Array.prototype.pop()pop() 方法将删除 arrayObject 的最后一个元素，把数组长度减 1，并且返回它删除的元素的值。如果数组已经为空，则 pop() 不改变数组，并返回 undefined 值。1arrayObject.pop() Array.prototype.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript笔记">
-<meta property="og:url" content="http://yoursite.com/2018/02/05/JavaScript笔记/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/02/26/JavaScript笔记/index.html">
 <meta property="og:site_name" content="yanyu&#39;s">
 <meta property="og:description" content="数组Array常用方法Array.prototype.pop()pop() 方法将删除 arrayObject 的最后一个元素，把数组长度减 1，并且返回它删除的元素的值。如果数组已经为空，则 pop() 不改变数组，并返回 undefined 值。1arrayObject.pop() Array.prototype.unshift()将一个或多个元素添加到数组的开头，并返回新数组的长度。1arr">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-02-05T09:26:35.939Z">
+<meta property="og:updated_time" content="2018-02-26T08:12:20.752Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript笔记">
 <meta name="twitter:description" content="数组Array常用方法Array.prototype.pop()pop() 方法将删除 arrayObject 的最后一个元素，把数组长度减 1，并且返回它删除的元素的值。如果数组已经为空，则 pop() 不改变数组，并返回 undefined 值。1arrayObject.pop() Array.prototype.unshift()将一个或多个元素添加到数组的开头，并返回新数组的长度。1arr">
@@ -119,7 +119,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/02/05/JavaScript笔记/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/02/26/JavaScript笔记/"/>
 
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/05/JavaScript笔记/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/26/JavaScript笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yanyuw">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-05T17:26:35+08:00">
-                2018-02-05
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-26T16:12:20+08:00">
+                2018-02-26
               </time>
             
 
@@ -402,6 +402,18 @@
 <li>(编程)迭代(iterate) - 按顺序访问线性结构中的每一项</li>
 <li>遍历(traversal) - 按规则访问非线性结构中的每一项</li>
 </ul>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="立即执行函数"><a href="#立即执行函数" class="headerlink" title="立即执行函数"></a><a href="http://blog.csdn.net/csdn_yudong/article/details/77431106" target="_blank" rel="noopener">立即执行函数</a></h3><p>函数声明和函数表达式的不同：<br>1.函数声明提升<br>2.函数表达式后面可以加括号立即调用该函数，函数声明不可以，只能以 fnName() 形式调用<br>而 () 、! 、+ 、- 、= 等运算符，都将函数声明转换成函数表达式</p>
+<h2 id="JS模块化"><a href="#JS模块化" class="headerlink" title="JS模块化"></a>JS模块化</h2><ul>
+<li><a href="http://www.ruanyifeng.com/blog/2012/10/javascript_module.html" target="_blank" rel="noopener">（一）模块的写法</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html" target="_blank" rel="noopener">（二）AMD规范</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html" target="_blank" rel="noopener">（三）require.js</a></li>
+</ul>
+<h3 id="commonjs"><a href="#commonjs" class="headerlink" title="commonjs"></a>commonjs</h3><p> 用全局性方法require() 加载模块</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var math = require(&apos;math&apos;); // 有一个math.js 用require() 加载</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var math = require(&apos;math&apos;);</span><br><span class="line">math.add(2,3); // 5</span><br><span class="line">//调用模块提供的方法</span><br></pre></td></tr></table></figure>
+<p> 调用时必须等math.js加载完，不是异步过程，不适用于浏览器端。</p>
+<p> 模块通过export来导出对外暴露的属性接口，在一个module里面没有通过 exports 暴露出来的变量都是相对于module私有的</p>
+<h3 id="AMD"><a href="#AMD" class="headerlink" title="AMD"></a>AMD</h3><p> 采用异步方式加载模块，模块的加载不影响它后面语句的运行。<br> 所有依赖这个模块的语句，都定义在一个回调函数中</p>
+<p> AMD也采用require()语句加载模块，但它要求两个参数：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">    require([module], callback);</span><br><span class="line"></span><br><span class="line">//第一个参数[module]，是一个数组，里面的成员就是要加载的模块</span><br><span class="line">//第二个参数callback，则是加载成功之后的回调函数。</span><br><span class="line"></span><br><span class="line">    require([&apos;math&apos;], function (math) &#123;</span><br><span class="line">        math.add(2, 3);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure></p>
 <h2 id="零碎"><a href="#零碎" class="headerlink" title="零碎"></a>零碎</h2><ul>
 <li>NaN == NaN false 不等于它本身</li>
 <li>当你想测试一个变量是否有效值 和null比较 </li>
@@ -446,8 +458,8 @@ console.log(a); //(10) [empty × 10]
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/30/C语言笔记/" rel="next" title="C语言笔记">
-                <i class="fa fa-chevron-left"></i> C语言笔记
+              <a href="/2018/01/29/css笔记/" rel="next" title="css笔记">
+                <i class="fa fa-chevron-left"></i> css笔记
               </a>
             
           </div>
@@ -455,6 +467,10 @@ console.log(a); //(10) [empty × 10]
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/11/CS lab/" rel="prev" title="CS lab">
+                CS lab <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -531,7 +547,7 @@ console.log(a); //(10) [empty × 10]
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
@@ -579,7 +595,7 @@ console.log(a); //(10) [empty × 10]
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数组Array常用方法"><span class="nav-number">1.</span> <span class="nav-text">数组Array常用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-prototype-pop"><span class="nav-number">1.1.</span> <span class="nav-text">Array.prototype.pop()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-prototype-unshift"><span class="nav-number">1.2.</span> <span class="nav-text">Array.prototype.unshift()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-prototype-concat"><span class="nav-number">1.3.</span> <span class="nav-text">Array.prototype.concat()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-prototype-slice"><span class="nav-number">1.4.</span> <span class="nav-text">Array.prototype.slice()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-prototype-forEach"><span class="nav-number">1.5.</span> <span class="nav-text">Array.prototype.forEach()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-prototype-map"><span class="nav-number">1.6.</span> <span class="nav-text">Array.prototype.map()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-prototype-filter"><span class="nav-number">1.7.</span> <span class="nav-text">Array.prototype.filter()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-prototype-reduce"><span class="nav-number">1.8.</span> <span class="nav-text">Array.prototype.reduce()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-from"><span class="nav-number">1.9.</span> <span class="nav-text">Array.from()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#声明"><span class="nav-number">2.</span> <span class="nav-text">声明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#var"><span class="nav-number">2.1.</span> <span class="nav-text">var</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#let"><span class="nav-number">2.2.</span> <span class="nav-text">let</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原型"><span class="nav-number">3.</span> <span class="nav-text">原型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造函数（constructor）"><span class="nav-number">4.</span> <span class="nav-text">构造函数（constructor）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-defineProperty"><span class="nav-number">5.</span> <span class="nav-text">Object.defineProperty()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-getPrototypeOf"><span class="nav-number">6.</span> <span class="nav-text">Object.getPrototypeOf()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-create"><span class="nav-number">7.</span> <span class="nav-text">Object.create()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#apply-call"><span class="nav-number">8.</span> <span class="nav-text">apply call</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Function-prototype-bind"><span class="nav-number">9.</span> <span class="nav-text">Function.prototype.bind()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delete操作符"><span class="nav-number">10.</span> <span class="nav-text">delete操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String-prototype-split"><span class="nav-number">11.</span> <span class="nav-text">String.prototype.split()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可枚举属性-不可枚举属性"><span class="nav-number">12.</span> <span class="nav-text">可枚举属性 不可枚举属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-keys"><span class="nav-number">13.</span> <span class="nav-text">Object.keys()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展运算符…"><span class="nav-number">14.</span> <span class="nav-text">扩展运算符…</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代器和生成器"><span class="nav-number">15.</span> <span class="nav-text">迭代器和生成器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#迭代器"><span class="nav-number">15.1.</span> <span class="nav-text">迭代器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成器generator"><span class="nav-number">15.2.</span> <span class="nav-text">生成器generator</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环-递归-迭代-遍历"><span class="nav-number">16.</span> <span class="nav-text">循环 递归 迭代 遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#零碎"><span class="nav-number">17.</span> <span class="nav-text">零碎</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数组Array常用方法"><span class="nav-number">1.</span> <span class="nav-text">数组Array常用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-prototype-pop"><span class="nav-number">1.1.</span> <span class="nav-text">Array.prototype.pop()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-prototype-unshift"><span class="nav-number">1.2.</span> <span class="nav-text">Array.prototype.unshift()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-prototype-concat"><span class="nav-number">1.3.</span> <span class="nav-text">Array.prototype.concat()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-prototype-slice"><span class="nav-number">1.4.</span> <span class="nav-text">Array.prototype.slice()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-prototype-forEach"><span class="nav-number">1.5.</span> <span class="nav-text">Array.prototype.forEach()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-prototype-map"><span class="nav-number">1.6.</span> <span class="nav-text">Array.prototype.map()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-prototype-filter"><span class="nav-number">1.7.</span> <span class="nav-text">Array.prototype.filter()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-prototype-reduce"><span class="nav-number">1.8.</span> <span class="nav-text">Array.prototype.reduce()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-from"><span class="nav-number">1.9.</span> <span class="nav-text">Array.from()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#声明"><span class="nav-number">2.</span> <span class="nav-text">声明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#var"><span class="nav-number">2.1.</span> <span class="nav-text">var</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#let"><span class="nav-number">2.2.</span> <span class="nav-text">let</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原型"><span class="nav-number">3.</span> <span class="nav-text">原型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造函数（constructor）"><span class="nav-number">4.</span> <span class="nav-text">构造函数（constructor）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-defineProperty"><span class="nav-number">5.</span> <span class="nav-text">Object.defineProperty()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-getPrototypeOf"><span class="nav-number">6.</span> <span class="nav-text">Object.getPrototypeOf()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-create"><span class="nav-number">7.</span> <span class="nav-text">Object.create()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#apply-call"><span class="nav-number">8.</span> <span class="nav-text">apply call</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Function-prototype-bind"><span class="nav-number">9.</span> <span class="nav-text">Function.prototype.bind()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delete操作符"><span class="nav-number">10.</span> <span class="nav-text">delete操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String-prototype-split"><span class="nav-number">11.</span> <span class="nav-text">String.prototype.split()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可枚举属性-不可枚举属性"><span class="nav-number">12.</span> <span class="nav-text">可枚举属性 不可枚举属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-keys"><span class="nav-number">13.</span> <span class="nav-text">Object.keys()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展运算符…"><span class="nav-number">14.</span> <span class="nav-text">扩展运算符…</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代器和生成器"><span class="nav-number">15.</span> <span class="nav-text">迭代器和生成器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#迭代器"><span class="nav-number">15.1.</span> <span class="nav-text">迭代器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成器generator"><span class="nav-number">15.2.</span> <span class="nav-text">生成器generator</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环-递归-迭代-遍历"><span class="nav-number">16.</span> <span class="nav-text">循环 递归 迭代 遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-number">17.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#立即执行函数"><span class="nav-number">17.1.</span> <span class="nav-text">立即执行函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS模块化"><span class="nav-number">18.</span> <span class="nav-text">JS模块化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#commonjs"><span class="nav-number">18.1.</span> <span class="nav-text">commonjs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AMD"><span class="nav-number">18.2.</span> <span class="nav-text">AMD</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#零碎"><span class="nav-number">19.</span> <span class="nav-text">零碎</span></a></li></ol></div>
             
 
           </div>

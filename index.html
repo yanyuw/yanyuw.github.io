@@ -229,7 +229,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/05/JavaScript笔记/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/11/Js模块化及webpack总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yanyuw">
@@ -248,7 +248,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/05/JavaScript笔记/" itemprop="url">JavaScript笔记</a></h1>
+                <a class="post-title-link" href="/2018/03/11/Js模块化及webpack总结/" itemprop="url">JS模块化及webpack总结</a></h1>
         
 
         <div class="post-meta">
@@ -260,8 +260,312 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-05T17:26:35+08:00">
-                2018-02-05
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-11T21:51:27+08:00">
+                2018-03-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/总结/" itemprop="url" rel="index">
+                    <span itemprop="name">总结</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>就像作家会把书分章分段落，程序员叶需要把代码分成模块，每个模块可以专注于一个功能。分割后，便于你增加减少或修改功能，同时又不会影响整个系统</p>
+<h2 id="模块化的优点"><a href="#模块化的优点" class="headerlink" title="模块化的优点?"></a>模块化的优点?</h2><p>可维护，避免命名空间被污染，可复用。</p>
+<p>模块化的几种方法：<br>    1.匿名闭包函数（立即执行函数）<br>    2.全局引入<br>    3.对象接口<br>    4.……</p>
+<h2 id="webpack-config-js-各项意义及用法"><a href="#webpack-config-js-各项意义及用法" class="headerlink" title="webpack.config.js 各项意义及用法"></a>webpack.config.js 各项意义及用法</h2><h3 id="入口-entry"><a href="#入口-entry" class="headerlink" title="入口(entry)"></a>入口(entry)</h3><p>入口指示 webpack 应该使用哪个模块，来作为构建其内部依赖图的开始。进入入口起点后，webpack 会找出有哪些模块和库是入口起点（直接和间接）依赖的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">  entry: &apos;./path/to/my/entry/file.js&apos;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="出口-output"><a href="#出口-output" class="headerlink" title="出口(output)"></a>出口(output)</h3><p>output 属性告诉 webpack 在哪里输出它所创建的 bundles，以及如何命名这些文件。你可以通过在配置中指定一个 output 字段，来配置这些处理过程：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const path = require(&apos;path&apos;);</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">  entry: &apos;./path/to/my/entry/file.js&apos;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, &apos;dist&apos;), </span><br><span class="line">    /*通过 filename 和 path 属性，</span><br><span class="line">    来告诉 webpack bundle 的名称，以及我们想要生成到哪里。</span><br><span class="line">    */</span><br><span class="line">    filename: &apos;my-first-webpack.bundle.js&apos;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="loader"><a href="#loader" class="headerlink" title="loader"></a>loader</h3><p>loader让 webpack 能够去处理那些非 JavaScript 文件（webpack 自身只理解 JavaScript）。<br>loader 可以将所有类型的文件转换为 webpack 能够处理的有效模块，然后你就可以利用 webpack 的打包能力，对它们进行处理。</p>
+<p>1.test属性：用于标识出应该被对应的 loader 进行转换的某个或某些文件<br>2.use属性：表示进行转换时，应该使用哪个 loader。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">const path = require(&apos;path&apos;);</span><br><span class="line"></span><br><span class="line">const config = &#123;</span><br><span class="line">  entry: &apos;./path/to/my/entry/file.js&apos;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, &apos;dist&apos;),</span><br><span class="line">    filename: &apos;my-first-webpack.bundle.js&apos;</span><br><span class="line">  &#125;,</span><br><span class="line">  module: &#123; </span><br><span class="line">        /*对一个单独的 module 对象定义了 rules 属性，</span><br><span class="line">        并包含两个必须属性：test 和 use，告诉 webpack 编译器。</span><br><span class="line">        当你碰到「&apos;.txt&apos; 」时，先使用 raw-loader 转换一下再打包。”*/</span><br><span class="line">    rules: [</span><br><span class="line">      &#123; test: /\.txt$/, use: &apos;raw-loader&apos; &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">module.exports = config;</span><br></pre></td></tr></table></figure>
+<h3 id="插件-plugins"><a href="#插件-plugins" class="headerlink" title="插件(plugins)"></a>插件(plugins)</h3><p>插件则可以用于执行范围更广的任务，从打包优化和压缩，到重新定义环境中的变量。</p>
+<p>使用一个插件需要 require() ，然后把它添加到 plugins 数组中。<br>多数插件可以通过选项(option)自定义。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">const HtmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;); // 通过 npm 安装</span><br><span class="line">const webpack = require(&apos;webpack&apos;); // 用于访问内置插件</span><br><span class="line">const path = require(&apos;path&apos;);</span><br><span class="line"></span><br><span class="line">const config = &#123;</span><br><span class="line">  entry: &apos;./path/to/my/entry/file.js&apos;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, &apos;dist&apos;),</span><br><span class="line">    filename: &apos;my-first-webpack.bundle.js&apos;</span><br><span class="line">  &#125;,</span><br><span class="line">  module: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123; test: /\.txt$/, use: &apos;raw-loader&apos; &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">    new webpack.optimize.UglifyJsPlugin(), </span><br><span class="line">    /*可以在一个配置文件中因为不同目的而多次使用同一个插件，</span><br><span class="line">    这时需要通过使用 new 操作符来创建它的一个实例。*/</span><br><span class="line">    new HtmlWebpackPlugin(&#123;template: &apos;./src/index.html&apos;&#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">module.exports = config;</span><br></pre></td></tr></table></figure>
+<h2 id="package-json-各项意义及用法"><a href="#package-json-各项意义及用法" class="headerlink" title="package.json 各项意义及用法"></a>package.json 各项意义及用法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;name&quot;:&quot;&quot;,</span><br><span class="line">            //---npm包名---  必须项,在npm库里唯一</span><br><span class="line">            //可包含：小写的字母、数字、.、_、-，禁止出现空格。必须小于等于214个字符。不能以&quot;.&quot;(点)或者&quot;_&quot;(下划线)开头</span><br><span class="line">    &quot;description&quot;:&quot;&quot;,</span><br><span class="line">            //---该包的简介，描述---  是一个字符串</span><br><span class="line">            //可以帮助人在使用npm search时找到这个包。</span><br><span class="line">    &quot;version&quot;:&quot;&quot;,</span><br><span class="line">            //---版本号--- 必须项</span><br><span class="line">            //格式 xx.xx.xx</span><br><span class="line">            //name和version组成的标识是唯一的</span><br><span class="line">    &quot;keywords&quot;:&quot;&quot;,</span><br><span class="line">            //---关键词数组--- 是一个字符串的数组。</span><br><span class="line">            //可以帮助人在使用npm search时找到这个包</span><br><span class="line">    &quot;lincenses&quot;:&quot;&quot;,</span><br><span class="line">            //---当前包所使用的许可证列表---</span><br><span class="line">            //让用户知道他们的使用权利和和任何限制</span><br><span class="line">            //格式:[&#123;&quot;type&quot;:xx,&quot;url&quot;:&quot;http://xx.com&quot;&#125;]</span><br><span class="line">    &quot;repositories&quot;:&quot;&quot;,</span><br><span class="line">            //---源代码的托管位置--- 仓库</span><br><span class="line">    &quot;dependencies&quot;:&quot;&quot;,</span><br><span class="line">            //---当前包所需的依赖包---</span><br><span class="line">    &quot;homepage&quot;:&quot;&quot;,</span><br><span class="line">            //---当前包的网站位置--- 主页</span><br><span class="line">    &quot;os&quot;:&quot;&quot;,</span><br><span class="line">            //---支持的操作系统列表---</span><br><span class="line">            //一般为空（基本都支持）</span><br><span class="line">    &quot;cpu&quot;:&quot;&quot;, </span><br><span class="line">            //---支持的CPU架构列表---</span><br><span class="line">            //一般为空（基本都支持）</span><br><span class="line">            //有效的值：arm,mips,ppc,sparc,x86,x86_64.</span><br><span class="line">    &quot;engine&quot;:&quot;&quot;,</span><br><span class="line">            //---支持的javascript引擎列表---</span><br><span class="line">            //一般为空（基本都支持）</span><br><span class="line">            //有效的值：ejs,mips,flusspferd,gpsee,jsc,spidermonkey,narwhal,node,v8.</span><br><span class="line">    &quot;directories&quot;:&quot;&quot;,</span><br><span class="line">            //---包目录说明---</span><br><span class="line">    &quot;implements&quot;:&quot;&quot;,</span><br><span class="line">            //---实现规范的列表---</span><br><span class="line">            //标志当前包实现了CommonJs的哪些规范</span><br><span class="line">    &quot;scripts&quot;：&quot;&quot;,</span><br><span class="line">            //---脚本说明对象---</span><br><span class="line">            //用来安装、编译、测试、卸载包</span><br><span class="line">            //可是一段命令或者js文件</span><br><span class="line">            /*</span><br><span class="line">            &quot;scripts&quot;: &#123;</span><br><span class="line">                &quot;precommit&quot;: &quot;eslint --cache --fix ./js/ ./common&quot;,</span><br><span class="line">                &quot;build_clear&quot;: &quot;rimraf -rf build&amp;&amp; mkdir build&quot;,</span><br><span class="line">                &quot;start&quot;: &quot;cross-env NODE_ENV=development node --max-old-space-size=8192,</span><br><span class="line">                &quot;test&quot;:&quot;test.js&quot;</span><br><span class="line">            &#125;</span><br><span class="line">            */</span><br><span class="line">    &quot;author&quot;：&quot;&quot;,</span><br><span class="line">            //---包作者---</span><br><span class="line">    &quot;maintainters&quot;:&quot;&quot;,</span><br><span class="line">            //---包维护者列表---</span><br><span class="line">            //示例:[&#123;&quot;name&quot;:xx,&quot;email&quot;:&quot;xx@gmail.com&quot;,&quot;web&quot;:&quot;http://xx.com&quot;&#125;,&#123;...&#125;]</span><br><span class="line">    &quot;contributors&quot;:&quot;&quot;,</span><br><span class="line">            //---贡献者列表---</span><br><span class="line">            //第一个是包作者本人，格式同上面包维护者相同</span><br><span class="line">    &quot;bus&quot;:&quot;&quot;,</span><br><span class="line">            //---可反馈bug的url或者email</span><br><span class="line">    &quot;bin&quot;:&quot;&quot;,</span><br><span class="line">            //---包可作为命令行工具使用---</span><br><span class="line">            //配置好bin字段后，通过npm install &lt;package_name&gt; -g 将脚本添加到执行路径中，之后可以在命令行中直接执行。</span><br><span class="line">            //类似全局安装了webpack~</span><br><span class="line">    &quot;main&quot;:&quot;&quot;,</span><br><span class="line">            //---入口文件---</span><br><span class="line">            //如果不存在这个字段，会自动按下面顺序查找:index.js,index.node,index.json</span><br><span class="line">    &quot;devDenpendencies&quot;:&quot;&quot;</span><br><span class="line">            //---只在开发时需要的依赖包---</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第一次接触webpack的json文件全按enter的默认设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;task&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</span><br><span class="line">  &quot;description&quot;: &quot;&quot;,</span><br><span class="line">  &quot;main&quot;: &quot;index.js&quot;,</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;author&quot;: &quot;&quot;,</span><br><span class="line">  &quot;license&quot;: &quot;ISC&quot;,</span><br><span class="line">  &quot;devDependencies&quot;: &#123;</span><br><span class="line">    &quot;webpack&quot;: &quot;^4.0.0&quot;,</span><br><span class="line">    &quot;webpack-cli&quot;: &quot;^2.0.9&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/11/CS lab/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yanyuw">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yanyu's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/11/CS lab/" itemprop="url">CS lab</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-11T20:07:40+08:00">
+                2018-03-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="3-5"><a href="#3-5" class="headerlink" title="3.5"></a>3.5</h2><p>ADT:数据类型的定义和它的实现是分开的。（例子：开车。表面的操作与内在的执行是分开的，同样，软件表面的操作暴露，而内在代码没有 ）<br>Queue(队列)：FIFO(first in first out) 队列只允许在后端（称为rear）进行插入操作，在前端（称为front）进行删除操作。<br>队列的操作方式和堆栈类似，唯一的区别在于队列只允许新数据在后端进行添加。<br> enqueue:插入<br> dequeue:删除<br>Stack（栈）：LIFO(last in first out) 堆箱子一样，最后堆的箱子在最上面 （push/pop/top(peek)/isEmpty/size/）只能允许在链接串列或阵列的一端（称为堆叠顶端指标，英语：top）进行加入数据（英语：push）和输出数据（英语：pop）的运算。（例子：浏览网站时后退）top()是将指针置于堆栈顶部 注意堆栈满了（full）和空（empty）的情况</p>
+<h2 id="3-8"><a href="#3-8" class="headerlink" title="3.8"></a>3.8</h2><p><strong>数据结构是什么？</strong><br><a href="https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84" target="_blank" rel="noopener">数据结构</a>（data structure）是计算机中存储、组织数据的方式。</p>
+<p>ProAbs C++：</p>
+<p>枚举类型<br>好处：</p>
+<ul>
+<li>C ++编译器对枚举类型进行了一些基本的检查。例如，如果没有类型转换，则不能将整数值分配给枚举变量，这有助于引起注意可能的错误，例如为枚举分配值超出范围</li>
+<li>使用枚举类型的程序更容易调试。编译器使枚举常量的名称可供调试器使用。</li>
+</ul>
+<p>标量类型（scalar type）：枚举类型，字符和各种整数表示形成一个更普通的类型类，称为标量类型。当在C ++表达式中使用标量类型的值时，编译器会自动将其转换为用于表示该值的整数。这个规则的效果是，你可以对任何标量类型的值执行与整数的操作相同的操作。</p>
+<h2 id="3-11"><a href="#3-11" class="headerlink" title="3.11"></a>3.11</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/26/JavaScript笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yanyuw">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yanyu's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/26/JavaScript笔记/" itemprop="url">JavaScript笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-26T16:12:20+08:00">
+                2018-02-26
               </time>
             
 
@@ -403,6 +707,18 @@
 <li>(编程)迭代(iterate) - 按顺序访问线性结构中的每一项</li>
 <li>遍历(traversal) - 按规则访问非线性结构中的每一项</li>
 </ul>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="立即执行函数"><a href="#立即执行函数" class="headerlink" title="立即执行函数"></a><a href="http://blog.csdn.net/csdn_yudong/article/details/77431106" target="_blank" rel="noopener">立即执行函数</a></h3><p>函数声明和函数表达式的不同：<br>1.函数声明提升<br>2.函数表达式后面可以加括号立即调用该函数，函数声明不可以，只能以 fnName() 形式调用<br>而 () 、! 、+ 、- 、= 等运算符，都将函数声明转换成函数表达式</p>
+<h2 id="JS模块化"><a href="#JS模块化" class="headerlink" title="JS模块化"></a>JS模块化</h2><ul>
+<li><a href="http://www.ruanyifeng.com/blog/2012/10/javascript_module.html" target="_blank" rel="noopener">（一）模块的写法</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html" target="_blank" rel="noopener">（二）AMD规范</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html" target="_blank" rel="noopener">（三）require.js</a></li>
+</ul>
+<h3 id="commonjs"><a href="#commonjs" class="headerlink" title="commonjs"></a>commonjs</h3><p> 用全局性方法require() 加载模块</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var math = require(&apos;math&apos;); // 有一个math.js 用require() 加载</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var math = require(&apos;math&apos;);</span><br><span class="line">math.add(2,3); // 5</span><br><span class="line">//调用模块提供的方法</span><br></pre></td></tr></table></figure>
+<p> 调用时必须等math.js加载完，不是异步过程，不适用于浏览器端。</p>
+<p> 模块通过export来导出对外暴露的属性接口，在一个module里面没有通过 exports 暴露出来的变量都是相对于module私有的</p>
+<h3 id="AMD"><a href="#AMD" class="headerlink" title="AMD"></a>AMD</h3><p> 采用异步方式加载模块，模块的加载不影响它后面语句的运行。<br> 所有依赖这个模块的语句，都定义在一个回调函数中</p>
+<p> AMD也采用require()语句加载模块，但它要求两个参数：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">    require([module], callback);</span><br><span class="line"></span><br><span class="line">//第一个参数[module]，是一个数组，里面的成员就是要加载的模块</span><br><span class="line">//第二个参数callback，则是加载成功之后的回调函数。</span><br><span class="line"></span><br><span class="line">    require([&apos;math&apos;], function (math) &#123;</span><br><span class="line">        math.add(2, 3);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure></p>
 <h2 id="零碎"><a href="#零碎" class="headerlink" title="零碎"></a>零碎</h2><ul>
 <li>NaN == NaN false 不等于它本身</li>
 <li>当你想测试一个变量是否有效值 和null比较 </li>
@@ -422,191 +738,6 @@ console.log(a); //(10) [empty × 10]
 ``` -->
 <ul>
 <li>undefined与空槽不同 length把空槽算进去</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/30/C语言笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yanyuw">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="yanyu's">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/30/C语言笔记/" itemprop="url">C语言笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-30T18:49:39+08:00">
-                2018-01-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">in</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="格式输出"><a href="#格式输出" class="headerlink" title="格式输出"></a>格式输出</h2><ul>
-<li>%u 十进制无符号整数 </li>
-<li>%f 单精度浮点型 (float)</li>
-<li>%lf 双精度浮点型 (double)</li>
-<li>%s 字符串 </li>
-<li>%c 单个字符 </li>
-<li>%p 指针的值 </li>
-<li>%e 指数形式的浮点数 </li>
-<li>%x, %X 无符号以十六进制表示的整数 </li>
-<li>%0 无符号以八进制表示的整数 </li>
-<li>%g 自动选择合适的表示法</li>
-<li>%lld long long型的整数</li>
-</ul>
-<p>printf中%f既可以输出float型又可以输出double型 float型会被提升为double型 不用%lf<br>scanf中区别%f和%lf</p>
-<hr>
-<h2 id="fgets函数"><a href="#fgets函数" class="headerlink" title="fgets函数"></a>fgets函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">char *  fgets(char * s, int n,FILE *stream);</span><br><span class="line"></span><br><span class="line">eg. fgets(str,n,stdin);</span><br></pre></td></tr></table></figure>
-<p>第一个参数表示存储所得数据的数组；<br>第二个参数表示指明存储数据的大小;（若为n，则从流中读入n-1个字符 fgets空出一个数组元素为’\0’准备）<br>第三个参数表示将要读取的文件流（stdin表示读取键盘输入的数据）；</p>
-<p><strong>fgets会将行末的换行符(‘\n’)读入，导致数组长度会+1</strong></p>
-<p>有遇到fgets将我不需要的第一行数据读入了数组的情况，这时候可以再用一个fgets函数将不需要的数据先读入一个数组，再用fgets读取真正需要的数据。</p>
-<hr>
-<h2 id="跳过不需要的数据"><a href="#跳过不需要的数据" class="headerlink" title="跳过不需要的数据"></a>跳过不需要的数据</h2><p>读取字符可能会把空格读取进去 用<code>scanf(&quot;%d%*c%c&quot;,&amp;n，&amp;c);</code> 可以避免把空格赋值给变量 </p>
-<p><strong>“*”符:用以表示该输入项,读入后不赋予相应的变量，即跳过该输入值。</strong></p>
-<p>例如：输入1 2时 若不用*符，则n为1，c为空格；用*符后 跳过了空格，所以n为1，c为’2’；</p>
-<hr>
-<h2 id="字符串相关的函数"><a href="#字符串相关的函数" class="headerlink" title="字符串相关的函数"></a>字符串相关的函数</h2><p><strong>strlen(a)</strong> 取字符串长度：求字符串a的长度（不包括结束符(‘\0’)）</p>
-<p><strong>strcpy(a, b)</strong> 复制字符串：将b拷贝给a</p>
-<p><strong>strncpy(a, b, n)</strong> 复制指定长度字符串：截取b的n个字符拷贝给a</p>
-<p><strong>strcat(a, b)</strong> 附加字符串：在字符串a之后连接上b</p>
-<p><strong>strncat(a, b, n)</strong> 附加指定长度字符串：从b截取n个字符连接在字符串a之后</p>
-<p><strong>strcmp(a, b)</strong> 比较字符串：根据ASCII码逐个字符比较字符串a、b 当a &lt; b 时 返回负数 当a &gt; b 时 返回正数 <strong>当a == b 时返回0</strong></p>
-<p><strong>strcasecmp(a,b)</strong> 忽略大小写比较字符串</p>
-<p><strong>strncmp(a, b, n)</strong> 比较指定长度字符串 最多比较n个字符</p>
-<p><strong>strchr(a, c)</strong> 从字符串头开始在字符串a中查找指定字符c首次出现的位置 返回指向第一次出现c位置的指针 没有则输出null</p>
-<p><strong>strrchr(a, c)</strong> 从字符串尾开始在字符串a中查找指定字符c首次出现的位置</p>
-<p><strong>strstr(a, b)</strong> 查找字符串：在字符串a中查找字符串b首次出现的位置 没有则返回null 有则从首次发现b字符串处返回a字符 （a的长度必须大于b）</p>
-<hr>
-<p>## </p>
-<hr>
-<h2 id="零碎"><a href="#零碎" class="headerlink" title="零碎"></a>零碎</h2><ul>
-<li>代码块不管几行都用方括号括起来</li>
-<li>数组尽量开大一点（有几题都是因为数组不够大导致答案错误）</li>
-<li>注意判断条件的先后，避免不必要的遍历，减少代码运行量</li>
-<li>先算术运算，后移位运算，最后位运算。</li>
 </ul>
 
           
@@ -764,312 +895,6 @@ console.log(a); //(10) [empty × 10]
 <h2 id="零碎"><a href="#零碎" class="headerlink" title="零碎"></a>零碎</h2><ul>
 <li>相同的部分用同一个class写样式 不同的再另一class写</li>
 </ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/29/PAT 总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yanyuw">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="yanyu's">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/29/PAT 总结/" itemprop="url">PAT 总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-29T16:40:17+08:00">
-                2018-01-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">in</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/总结/" itemprop="url" rel="index">
-                    <span itemprop="name">总结</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>刷完pat了！ 但是感觉很多题目没有总结经验，所以觉得再看一遍代码整理一下</p>
-<p>##PAT 1001</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/17/从输入url到显示网页/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yanyuw">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="yanyu's">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/17/从输入url到显示网页/" itemprop="url">从输入 URL 到页面加载</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-17T10:48:40+08:00">
-                2017-12-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">in</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="从输入-URL-到页面加载完的过程中都发生了什么事情？"><a href="#从输入-URL-到页面加载完的过程中都发生了什么事情？" class="headerlink" title="从输入 URL 到页面加载完的过程中都发生了什么事情？"></a>从输入 URL 到页面加载完的过程中都发生了什么事情？</h1><h2 id="输入URL"><a href="#输入URL" class="headerlink" title="输入URL"></a>输入URL</h2><h2 id="浏览器会接受用户所输入的url并解析-根据格式分成几个部分"><a href="#浏览器会接受用户所输入的url并解析-根据格式分成几个部分" class="headerlink" title="浏览器会接受用户所输入的url并解析 根据格式分成几个部分"></a>浏览器会接受用户所输入的url并解析 根据格式分成几个部分</h2><h2 id="浏览器通过域名-向DNS寻求-找出其对应的IP地址"><a href="#浏览器通过域名-向DNS寻求-找出其对应的IP地址" class="headerlink" title="浏览器通过域名 向DNS寻求 找出其对应的IP地址"></a>浏览器通过域名 向DNS寻求 找出其对应的IP地址</h2><h2 id="浏览器向确定的IP和端口号发起网络连接"><a href="#浏览器向确定的IP和端口号发起网络连接" class="headerlink" title="浏览器向确定的IP和端口号发起网络连接"></a>浏览器向确定的IP和端口号发起网络连接</h2><h2 id="浏览器根据协议（http）要求，向服务器组织一个请求的数据包"><a href="#浏览器根据协议（http）要求，向服务器组织一个请求的数据包" class="headerlink" title="浏览器根据协议（http）要求，向服务器组织一个请求的数据包"></a>浏览器根据协议（http）要求，向服务器组织一个请求的数据包</h2><p>里面包含大量请求信息，包括请求的资源路径、你的身份</p>
-<h2 id="网站服务的重定向响应"><a href="#网站服务的重定向响应" class="headerlink" title="网站服务的重定向响应"></a>网站服务的重定向响应</h2><p>（如fackbook的永久重定向相应 这样浏览器就会访问“<a href="http://www.facebook.com/”" target="_blank" rel="noopener">http://www.facebook.com/”</a> 而非“<a href="http://facebook.com/”。" target="_blank" rel="noopener">http://facebook.com/”。</a> 重定向：将带3w和不带3w归于同一网站 与搜索引擎排名有关）</p>
-<h2 id="浏览器跟踪重定向地址"><a href="#浏览器跟踪重定向地址" class="headerlink" title="浏览器跟踪重定向地址"></a>浏览器跟踪重定向地址</h2><h2 id="服务器“处理”请求，将数据返回给浏览器。"><a href="#服务器“处理”请求，将数据返回给浏览器。" class="headerlink" title="服务器“处理”请求，将数据返回给浏览器。"></a>服务器“处理”请求，将数据返回给浏览器。</h2><p>数据可能是页面的布局、文字。数据也可能是图片、脚本程序等。若资源路径指示的资源不存在，服务器就会返回404错误。</p>
-<h2 id="浏览器开始显示HTML"><a href="#浏览器开始显示HTML" class="headerlink" title="浏览器开始显示HTML"></a>浏览器开始显示HTML</h2><h2 id="浏览器发送获取嵌入在HTML中的对象的请求"><a href="#浏览器发送获取嵌入在HTML中的对象的请求" class="headerlink" title="浏览器发送获取嵌入在HTML中的对象的请求"></a>浏览器发送获取嵌入在HTML中的对象的请求</h2><p>（根据页面里一些外链的URL，例如图片的地址，按照以上步骤再次发送一个获取请求来重新获得这些文件）</p>
-<h2 id="浏览器开始渲染，根据资源的类型，将资源组织成屏幕上显示的图像"><a href="#浏览器开始渲染，根据资源的类型，将资源组织成屏幕上显示的图像" class="headerlink" title="浏览器开始渲染，根据资源的类型，将资源组织成屏幕上显示的图像"></a>浏览器开始渲染，根据资源的类型，将资源组织成屏幕上显示的图像</h2><p>（浏览器将HTML变成人眼看到的图像的过程）</p>
-<h2 id="浏览器将渲染好的页面图像显示出来，并开始响应用户的操作。浏览器发送异步（AJAX）请求"><a href="#浏览器将渲染好的页面图像显示出来，并开始响应用户的操作。浏览器发送异步（AJAX）请求" class="headerlink" title="浏览器将渲染好的页面图像显示出来，并开始响应用户的操作。浏览器发送异步（AJAX）请求"></a>浏览器将渲染好的页面图像显示出来，并开始响应用户的操作。浏览器发送异步（AJAX）请求</h2><h1 id="附：部分概念"><a href="#附：部分概念" class="headerlink" title="附：部分概念"></a>附：部分概念</h1><h3 id="URL："><a href="#URL：" class="headerlink" title="URL："></a><strong>URL</strong>：</h3><p>统一资源定位符（或称统一资源定位器/定位地址、URL地址等，俗称为网页地址（网址）；英语：Uniform Resource Locator，缩写URL）如同在网络上的门牌，是因特网上标准的资源的地址。</p>
-<p>统一资源定位符的标准格式如下：<br>　　协议类型:[//服务器地址[:端口号]][/资源层级UNIX文件路径]文件名[?查询][#片段ID]</p>
-<p>统一资源定位符的完整格式如下：<br>　　协议类型:[//[访问资源需要的凭证信息@]服务器地址[:端口号]][/资源层级UNIX文件路径]文件名[?查询][#片段ID]</p>
-<p>其中【访问凭证信息@；:端口号；?查询；#片段ID】都属于选填项。</p>
-<p>例如：<a href="http://www.guokr.com/question/554991/" target="_blank" rel="noopener">http://www.guokr.com/question/554991/</a><br>协议部分：http （从该计算机获取资源的方式，常见的是HTTP、FTP，不同协议有不同的通讯内容格式）<br>网络地址：www.guokr.com （指示该连接网络上哪一台计算机，可以是域名或者IP地址，可以包括端口号）<br>资源路径：/question/554991/ （指示从服务器上获取哪一项资源。）</p>
-<h3 id="DNS："><a href="#DNS：" class="headerlink" title="DNS："></a><strong>DNS</strong>：</h3><p>域名系统（英文：Domain Name System，缩写：DNS）是互联网的一项服务。它作为将域名和IP地址相互映射的一个分布式数据库，能够使人更方便地访问互联网。DNS使用TCP和UDP端口53</p>
-<h3 id="端口："><a href="#端口：" class="headerlink" title="端口："></a><strong>端口</strong>：</h3><p>逻辑端口是指逻辑意义上用于区分服务的端口，如TCP/IP协议中的服务端口，端口号的范围从0到65535，比如用于浏览网页服务的80端口，用于FTP服务的21端口等。由于物理端口和逻辑端口数量较多，为了对端口进行区分，将每个端口进行了编号，这就是端口号。<br>主机通过“IP地址+端口号”来区分不同的服务。</p>
-<h3 id="渲染："><a href="#渲染：" class="headerlink" title="渲染："></a><strong>渲染</strong>：</h3><p>构建渲染树，对各个元素进行位置计算、样式计算等等，然后根据渲染树对页面进行渲染（可以理解为“画”元素）</p>
-<p>渲染大致分为两部分，一部分是排版，一部分是绘制。排版就是根据文档流，加上浮动、定位等属性，确定各个盒子的位置还有尺寸。绘制就是将css的属性例如字体、背景色、圆角等等按照给定的方式呈现出来。各个浏览器的渲染效率不一样。</p>
-<h3 id="域名和url"><a href="#域名和url" class="headerlink" title="域名和url"></a><strong>域名和url</strong></h3><p>域名就是到 .com / .net / .org 就结束了<br>URL就是除了域名 还有后面的的/asl;dajs;dlfsdf.html 一长串资源路径</p>
-<h3 id="异步和同步："><a href="#异步和同步：" class="headerlink" title="异步和同步："></a><strong>异步和同步</strong>：</h3><p>举个例子：普通B/S模式（同步）AJAX技术（异步） </p>
-<p>同步：提交请求-&gt;等待服务器处理-&gt;处理完毕返回 这个期间客户端浏览器不能干任何事 </p>
-<p>异步: 请求通过事件触发-&gt;服务器处理（这是浏览器仍然可以作其他事情）-&gt;处理完毕 </p>
-<p>同步就是你叫我去吃饭，我听到了就和你去吃饭；如果没有听到，你就不停的叫，直到我告诉你听到了，才一起去吃饭。 </p>
-<p>异步就是你叫我，然后自己去吃饭，我得到消息后可能立即走，也可能等到下班才去吃饭。 </p>
-<p>AJAX技术实现了异步，但不等于异步。</p>
-<p>参考：<br><a href="http://blog.chinaunix.net/uid-20775243-id-2554969.html" target="_blank" rel="noopener">从输入url到显示网页，后台发生了什么？ </a><br><a href="https://www.guokr.com/question/554991/" target="_blank" rel="noopener">从输入 URL 到页面加载完的过程中都发生了什么事情？</a></p>
 
           
         
@@ -1743,7 +1568,7 @@ console.log(a); //(10) [empty × 10]
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
