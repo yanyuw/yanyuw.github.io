@@ -229,6 +229,635 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/20/c语言查找算法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yanyuw">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yanyu's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/20/c语言查找算法/" itemprop="url">查找算法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-20T20:26:08+08:00">
+                2018-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="顺序查找"><a href="#顺序查找" class="headerlink" title="顺序查找"></a>顺序查找</h2><ul>
+<li>不需要有序</li>
+</ul>
+<p>　　从数组的一端开始，顺序逐一扫描，依次与给定值k相比较，若相等则表示查找成功；若扫描结束仍没有找到等于k的元素，表示查找失败。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">int FindBySeq(int *ListSeq, int ListLength, int KeyData)</span><br><span class="line">&#123;</span><br><span class="line">    int tmp = 0;</span><br><span class="line">    int length = ListLength;</span><br><span class="line">    for (int i = 0; i &lt; ListLength; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if (ListSeq[i] == KeyData)</span><br><span class="line">            return i;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h2><ul>
+<li>前提：有序数组</li>
+</ul>
+<p>折半查找。<br>二分查找的基本思想是将n个元素分成大致相等的两部分，取a[n/2]与x做比较，如果x=a[n/2],则找到x,算法中止；如果x<a[n 2],则只要在数组a的左半部分继续搜索x,如果x="">a[n/2],则只要在数组a的右半部搜索x.</a[n></p>
+<p>可以用循环或递归</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">int binsearch(int *sortedSeq, int seqLength, int keyData)</span><br><span class="line">&#123;</span><br><span class="line">    int low = 0, mid, high = seqLength - 1;</span><br><span class="line"></span><br><span class="line">    while (low &lt;= high)</span><br><span class="line">    &#123;</span><br><span class="line">        mid = (low + high) / 2;//奇数，无论奇偶，有个值就行</span><br><span class="line">        if (keyData &lt; sortedSeq[mid])</span><br><span class="line">        &#123;</span><br><span class="line">            high = mid - 1;//是mid-1，因为mid已经比较过了</span><br><span class="line">        &#125;</span><br><span class="line">        else if (keyData &gt; sortedSeq[mid])</span><br><span class="line">        &#123;</span><br><span class="line">            low = mid + 1;</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            return mid;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="插值查找"><a href="#插值查找" class="headerlink" title="插值查找"></a>插值查找</h2><ul>
+<li>有序数组</li>
+<li>二分法的优化</li>
+</ul>
+<p>改变了二分法的分法。</p>
+<p>根据要查找的值在整个有序数组中所处的位置，让mid值的变化更靠近关键字key，这样也就间接地减少了比较次数。<br><code>mid=low+(key-a[low])/(a[high]-a[low])*(high-low)</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">int insertSearch(int *sortedSeq, int seqLength, int keyData)</span><br><span class="line">&#123;</span><br><span class="line">    int low = 0, mid, high = seqLength - 1;</span><br><span class="line"></span><br><span class="line">    while (low &lt;= high)</span><br><span class="line">    &#123;</span><br><span class="line">        mid = low + (keyData - sortedSeq[low]) / (sortedSeq[high] - sortedSeq[low]);</span><br><span class="line">        if (keyData &lt; sortedSeq[mid])</span><br><span class="line">        &#123;</span><br><span class="line">            high = mid - 1;//是mid-1，因为mid已经比较过了</span><br><span class="line">        &#125;</span><br><span class="line">        else if (keyData &gt; sortedSeq[mid])</span><br><span class="line">        &#123;</span><br><span class="line">            low = mid + 1;</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            return mid;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="斐波那契查找"><a href="#斐波那契查找" class="headerlink" title="斐波那契查找"></a>斐波那契查找</h2><p>根据斐波那契数列和黄金分割点</p>
+<p>1)最接近查找长度的斐波那契值来确定拆分点;<br>2)黄金分割。</p>
+<p>斐波那契数列：1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89……<br>随着斐波那契数列的递增，前后两个数的比值会越来越接近0.618</p>
+<ol>
+<li><p>斐波那契是一种特殊的分割方法，和二分、插值本质上是一样的，都是分割方法；</p>
+</li>
+<li><p>利用了斐波那契数列特殊的性质，一个长度只要可以被黄金分割，那么分割后的片段仍然可以继续进行黄金分割，循环。</p>
+</li>
+</ol>
+<p>也可以用递归写<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">// 斐波那契查找.cpp   </span><br><span class="line">  </span><br><span class="line">#include &quot;stdafx.h&quot;  </span><br><span class="line">#include &lt;memory&gt;  </span><br><span class="line">#include  &lt;iostream&gt;  </span><br><span class="line">using namespace std;  </span><br><span class="line">  </span><br><span class="line">const int max_size=20;//斐波那契数组的长度  </span><br><span class="line">  </span><br><span class="line">/*构造一个斐波那契数组*/   </span><br><span class="line">void Fibonacci(int * F)  </span><br><span class="line">&#123;  </span><br><span class="line">    F[0]=0;  </span><br><span class="line">    F[1]=1;  </span><br><span class="line">    for(int i=2;i&lt;max_size;++i)  </span><br><span class="line">        F[i]=F[i-1]+F[i-2];  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">/*定义斐波那契查找法*/    </span><br><span class="line">int Fibonacci_Search(int *a, int n, int key)  //a为要查找的数组,n为要查找的数组长度,key为要查找的关键字  </span><br><span class="line">&#123;  </span><br><span class="line">  int low=0;  </span><br><span class="line">  int high=n-1;  </span><br><span class="line">    </span><br><span class="line">  int F[max_size];  </span><br><span class="line">  Fibonacci(F);//构造一个斐波那契数组F   </span><br><span class="line">  </span><br><span class="line">  int k=0;  </span><br><span class="line">  while(n&gt;F[k]-1)//计算n位于斐波那契数列的位置  </span><br><span class="line">      ++k;  </span><br><span class="line">  </span><br><span class="line">  int  * temp;//将数组a扩展到F[k]-1的长度  </span><br><span class="line">  temp=new int [F[k]-1];  </span><br><span class="line">  memcpy(temp,a,n*sizeof(int));  </span><br><span class="line">  </span><br><span class="line">  for(int i=n;i&lt;F[k]-1;++i)  </span><br><span class="line">     temp[i]=a[n-1];  </span><br><span class="line">    </span><br><span class="line">  while(low&lt;=high)  </span><br><span class="line">  &#123;  </span><br><span class="line">    int mid=low+F[k-1]-1;  </span><br><span class="line">    if(key&lt;temp[mid])  </span><br><span class="line">    &#123;  </span><br><span class="line">      high=mid-1;  </span><br><span class="line">      k-=1;  </span><br><span class="line">    &#125;  </span><br><span class="line">    else if(key&gt;temp[mid])  </span><br><span class="line">    &#123;  </span><br><span class="line">     low=mid+1;  </span><br><span class="line">     k-=2;  </span><br><span class="line">    &#125;  </span><br><span class="line">    else  </span><br><span class="line">    &#123;  </span><br><span class="line">       if(mid&lt;n)  </span><br><span class="line">           return mid; //若相等则说明mid即为查找到的位置  </span><br><span class="line">       else  </span><br><span class="line">           return n-1; //若mid&gt;=n则说明是扩展的数值,返回n-1  </span><br><span class="line">    &#125;  </span><br><span class="line">  &#125;    </span><br><span class="line">  delete [] temp;  </span><br><span class="line">  return -1;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">int _tmain(int argc, _TCHAR* argv[])  </span><br><span class="line">&#123;  </span><br><span class="line">    int a[] = &#123;0,16,24,35,47,59,62,73,88,99&#125;;  </span><br><span class="line">    int key=100;  </span><br><span class="line">    int index=Fibonacci_Search(a,sizeof(a)/sizeof(int),key);  </span><br><span class="line">    cout&lt;&lt;key&lt;&lt;&quot; is located at:&quot;&lt;&lt;index;  </span><br><span class="line">    system(&quot;PAUSE&quot;);  </span><br><span class="line">    return 0;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/31/JavaScript笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yanyuw">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yanyu's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/31/JavaScript笔记/" itemprop="url">JavaScript笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-31T20:42:29+08:00">
+                2018-03-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="数组Array常用方法"><a href="#数组Array常用方法" class="headerlink" title="数组Array常用方法"></a>数组Array常用方法</h2><h3 id="Array-prototype-pop"><a href="#Array-prototype-pop" class="headerlink" title="Array.prototype.pop()"></a>Array.prototype.pop()</h3><p>pop() 方法将删除 arrayObject 的最后一个元素，把数组长度减 1，<strong>并且返回它删除的元素的值</strong>。如果数组已经为空，则 pop() 不改变数组，并返回 undefined 值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arrayObject.pop()</span><br></pre></td></tr></table></figure></p>
+<h3 id="Array-prototype-unshift"><a href="#Array-prototype-unshift" class="headerlink" title="Array.prototype.unshift()"></a>Array.prototype.unshift()</h3><p>将一个或多个元素添加到数组的开头，并返回新数组的长度。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.unshift(element1, ..., elementN)</span><br></pre></td></tr></table></figure></p>
+<h3 id="Array-prototype-concat"><a href="#Array-prototype-concat" class="headerlink" title="Array.prototype.concat()"></a>Array.prototype.concat()</h3><p>方法用于合并两个或多个数组。此方法不会更改现有数组，而是<strong>返回一个新数组。</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var new_array = old_array.concat(value1[, value2[, ...[, valueN]]])</span><br></pre></td></tr></table></figure></p>
+<h3 id="Array-prototype-slice"><a href="#Array-prototype-slice" class="headerlink" title="Array.prototype.slice()"></a>Array.prototype.slice()</h3><p>可从已有的数组中返回选定的元素。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arrayObject.slice(start,end)</span><br></pre></td></tr></table></figure></p>
+<h3 id="Array-prototype-forEach"><a href="#Array-prototype-forEach" class="headerlink" title="Array.prototype.forEach()"></a>Array.prototype.forEach()</h3><p>返回新数组而不会改变原数组，且不会对空数组进行检测</p>
+<h3 id="Array-prototype-map"><a href="#Array-prototype-map" class="headerlink" title="Array.prototype.map()"></a>Array.prototype.map()</h3><p>对原数组的每个元素都按顺序执行一次callback函数，并返回每次执行函数的返回值所组成的新数组（包括undefined）</p>
+<p>**callback函数只会在有值的索引上被调用，没有赋过值或使用delete删除的索引则不会被调用<br>返回新数组而不会改变原数组，且不会对空数组进行检测</p>
+<h3 id="Array-prototype-filter"><a href="#Array-prototype-filter" class="headerlink" title="Array.prototype.filter()"></a>Array.prototype.filter()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array.filter(function(**currentValue**,index,arr), thisValue)</span><br></pre></td></tr></table></figure>
+<p>currentValue：当前元素的值<br>index：当前元素的索引值<br>返回新数组而不会改变原数组，且不会对空数组进行检测</p>
+<h3 id="Array-prototype-reduce"><a href="#Array-prototype-reduce" class="headerlink" title="Array.prototype.reduce()"></a>Array.prototype.reduce()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array.reduce(function(**total**, **currentValue**, currentIndex, arr), initialValue)</span><br></pre></td></tr></table></figure>
+<p>total：初始值 或计算结束后的返回值<br>currentValue：当前元素<br>currentIndex</p>
+<h3 id="Array-from"><a href="#Array-from" class="headerlink" title="Array.from()"></a>Array.from()</h3><p>可以将数组空元素设为undefined</p>
+<h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><ul>
+<li>在所有函数之外声明的变量，叫做<strong>全局变量</strong> 它可被当前文档中的任何其他代码所访问。</li>
+<li>在函数内部声明的变量，叫做<strong>局部变量</strong>，只能在该函数内部访问。</li>
+</ul>
+<p>用 var 或 let 声明的且未赋初值的变量，值会被设定为 undefined。数值类型环境中 undefined 值会被转换为 NaN。<br>const创建只读的常量，必须被初始化为某个值。（对象属性不受保护，仍可以通过赋值改变）</p>
+<h3 id="var"><a href="#var" class="headerlink" title="var"></a>var</h3><p>声明顺序没有关系，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(&quot;The value of c is &quot; + c);  // The value of c is undefined</span><br><span class="line">var c;</span><br></pre></td></tr></table></figure></p>
+<h3 id="let"><a href="#let" class="headerlink" title="let"></a>let</h3><p>与顺序有关，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(&quot;The value of x is &quot; + x); // Uncaught ReferenceError: x is not defined </span><br><span class="line">let x;</span><br></pre></td></tr></table></figure></p>
+<h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h2><p>__proto<strong>（隐式原型）与prototype（显式原型）<br>一个对象的隐式原型指向构造该对象的构造函数的原型<br>1.对象有属性</strong>proto<strong>,指向该对象的构造函数的原型对象。<br>2.方法除了有属性</strong>proto__,还有属性prototype，prototype指向该方法的原型对象。</p>
+<p>所有实例对象需要共享的属性和方法，都放在prototype对象里面；那些不需要共享的属性和方法，就放在构造函数里面。</p>
+<p>实例对象一旦创建，将自动引用prototype对象的属性和方法。也就是说，实例对象的属性和方法，分成两种，一种是本地的，另一种是引用的。</p>
+<p>关于原型：</p>
+<ul>
+<li><a href="http://www.ruanyifeng.com/blog/2011/06/designing_ideas_of_inheritance_mechanism_in_javascript.html" target="_blank" rel="noopener">JavaScript继承机制的设计思想</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/23090041?refer=study-fe" target="_blank" rel="noopener">什么是JS原型链</a></li>
+</ul>
+<h2 id="构造函数（constructor）"><a href="#构造函数（constructor）" class="headerlink" title="构造函数（constructor）"></a>构造函数（constructor）</h2><p>所谓”构造函数”，其实就是一个普通函数，但是内部使用了<strong>this</strong>变量。对构造函数使用<strong>new</strong>运算符，就能生成实例，并且<strong>this</strong>变量会绑定在实例对象上。<br>构造函数不需要返回值。<br>使用new来创建对象(调用构造函数)时，如果return的是非对象(数字、字符串、布尔类型等)会忽而略返回值;如果return的是对象，则返回该对象。（Js lab 第2题）</p>
+<h2 id="Object-defineProperty"><a href="#Object-defineProperty" class="headerlink" title="Object.defineProperty()"></a>Object.defineProperty()</h2><p>方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object.defineProperty(obj, prop, descriptor)</span><br></pre></td></tr></table></figure></p>
+<p>obj:<br>要在其上定义属性的对象。<br>prop:<br>要定义或修改的属性的名称。<br>descriptor:<br>将被定义或修改的属性描述符。</p>
+<p>默认情况下，使用Object.defineProperty()添加的属性值是<strong>不可变</strong>(不可配置属性)的。<br>descriptor的参数：<br><strong>注意</strong> 在调用Object.defineProperty()方法时，如果不指定， configurable， enumerable， writable特性的默认值都是false,这跟对于直接在对象上定义的属性，这个特性默认值为为 true 并不冲突<br><a href="http://imweb.io/topic/56d40adc0848801a4ba198ce" target="_blank" rel="noopener">不会Object.defineProperty你就out了</a></p>
+<h2 id="Object-getPrototypeOf"><a href="#Object-getPrototypeOf" class="headerlink" title="Object.getPrototypeOf()"></a>Object.getPrototypeOf()</h2><p>方法返回指定对象的原型（内部[[Prototype]]属性的值） 如果没有继承属性 则返回null<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object.getPrototypeOf(object)</span><br></pre></td></tr></table></figure></p>
+<p>obj：要返回其原型的对象</p>
+<p><code>Object.getPrototypeOf( Object ) === Function.prototype; //true</code></p>
+<h2 id="Object-create"><a href="#Object-create" class="headerlink" title="Object.create()"></a>Object.create()</h2><p>方法会使用指定的原型对象及其属性去创建一个新的对象。并返回在指定原型对象上添加新属性后的对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object.create(proto[, propertiesObject])</span><br></pre></td></tr></table></figure></p>
+<p>proto:<br>新创建对象的原型对象。<br>propertiesObject:<br>可选。如果没有指定为 undefined，则是要添加到新创建对象的可枚举属性（即其自身定义的属性，而不是其原型链上的枚举属性）对象的属性描述符以及相应的属性名称。这些属性对应Object.defineProperties()的第二个参数。</p>
+<h2 id="apply-call"><a href="#apply-call" class="headerlink" title="apply call"></a>apply call</h2><p>实现对象继承 为了动态改变this<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">obj.call(thisObj, arg1, arg2, ...);</span><br><span class="line">obj.apply(thisObj, [arg1, arg2, ...]);</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>猫吃鱼，狗吃肉，奥特曼打小怪兽。<br>有天狗想吃鱼了<br>猫.吃鱼.call(狗，鱼)<br>狗就吃到鱼了<br>猫成精了，想打怪兽<br>奥特曼.打小怪兽.call(猫，小怪兽) </p>
+</blockquote>
+<h2 id="Function-prototype-bind"><a href="#Function-prototype-bind" class="headerlink" title="Function.prototype.bind()"></a>Function.prototype.bind()</h2><p>创建一个新的函数, 当被调用时，将其this关键字设置为提供的值，在调用新函数时，在任何提供之前提供一个给定的参数序列。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fun.bind(thisArg[, arg1[, arg2[, ...]]])</span><br></pre></td></tr></table></figure></p>
+<p>thisArg：当绑定函数被调用时，该参数会作为原函数运行时的 this 指向。当使用new 操作符调用绑定函数时，该参数无效。<br>arg1, arg2, …：当绑定函数被调用时，这些参数将置于实参之前传递给被绑定的方法。</p>
+<h2 id="delete操作符"><a href="#delete操作符" class="headerlink" title="delete操作符"></a>delete操作符</h2><p>用于删除对象的某个属性。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">delete object.property </span><br><span class="line">delete object[&apos;property&apos;]</span><br></pre></td></tr></table></figure></p>
+<p>返回值：对于所有情况都是true，除非属性是一个自己的不可配置属性，在这种情况下，非严格模式返回 false。</p>
+<ul>
+<li>如果你删除的属性在对象上不存在，那么delete将不会起作用，但仍会返回true</li>
+<li>如果 delete 操作符删除成功，则被删除的属性将从所属的对象上彻底消失。然后，如果该对象的原型链上有一个同名属性，则该对象会从原型链上继承该同名属性。（也就是说delete操作只会在自身的属性上起作用）</li>
+<li>当一个属性被设置为不可设置，delete操作将不会有任何效果，并且会返回false。如Object.defineProperty(obj, prop, descriptor)</li>
+<li>当你删除一个数组元素时，数组的 length 属性并不会变小。即便你删除了数组的最后一个元素也是如此。</li>
+</ul>
+<h2 id="String-prototype-split"><a href="#String-prototype-split" class="headerlink" title="String.prototype.split()"></a>String.prototype.split()</h2><p>使用指定的分隔符字符串将一个String对象分割成字符串数组，以将字符串分隔为子字符串，以确定每个拆分的位置。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">str.split([separator[, limit]])</span><br><span class="line">//如果空字符串(&quot;&quot;)被用作分隔符，则字符串会在每个字符之间分割。</span><br></pre></td></tr></table></figure></p>
+<p>separator:<br>指定表示每个拆分应发生的点的字符串。可以是一个字符串或正则表达式。 如果纯文本分隔符包含多个字符，则必须找到整个字符串来表示分割点。如果在str中省略或不出现分隔符，则返回的数组包含一个由整个字符串组成的元素。<br>示例： <code>Webkit Moz O ms Khtml&quot;.split( &quot; &quot; )   // [&quot;Webkit&quot;, &quot;Moz&quot;, &quot;O&quot;, &quot;ms&quot;, &quot;Khtml&quot;]</code></p>
+<h2 id="可枚举属性-不可枚举属性"><a href="#可枚举属性-不可枚举属性" class="headerlink" title="可枚举属性 不可枚举属性"></a>可枚举属性 不可枚举属性</h2><ul>
+<li><a href="https://www.w3cplus.com/javascript/how-do-i-enumerate-the-properties-of-a-javascript-object.html" target="_blank" rel="noopener">对象属性的枚举</a></li>
+</ul>
+<p>如果使用直接赋值的方式创建对象的属性，则这个属性的enumerable为true</p>
+<ul>
+<li><a href="https://robin-front.github.io/2017/01/13/how-to-enumerate-object-properties/" target="_blank" rel="noopener">js遍历Object对象可枚举属性、不可枚举属性、原型链属性和自身属性</a></li>
+</ul>
+<h2 id="Object-keys"><a href="#Object-keys" class="headerlink" title="Object.keys()"></a>Object.keys()</h2><p>返回一个由一个给定对象的自身可枚举属性组成的数组，数组中属性名的排列顺序和使用 for…in 循环遍历该对象时返回的顺序一致 （两者的主要区别是 for-in 循环还会枚举其原型链上的属性）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object.keys(obj)</span><br></pre></td></tr></table></figure></p>
+<!-- ## 箭头函数
+ -->
+<!-- 
+## Map
+保存键值对。任何值(对象或者原始值) 都可以作为一个键或一个值。
+
+> 键值对:Key-Value
+> 键：就是存的值的编号
+> 值：就是要存放的数据 -->
+<h2 id="扩展运算符…"><a href="#扩展运算符…" class="headerlink" title="扩展运算符…"></a>扩展运算符…</h2><p>将一个数组转为用逗号分隔的参数序列。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myFunction(...iterableObj);</span><br></pre></td></tr></table></figure>
+<h2 id="迭代器和生成器"><a href="#迭代器和生成器" class="headerlink" title="迭代器和生成器"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Iterators_and_Generators" target="_blank" rel="noopener">迭代器和生成器</a></h2><h3 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h3><p>迭代器是一个对象，它提供了一个next() 方法，用来返回序列中的下一项。这个方法返回包含两个属性：done和 value。</p>
+<h3 id="生成器generator"><a href="#生成器generator" class="headerlink" title="生成器generator"></a>生成器generator</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function*  // 生成一个生成器函数</span><br></pre></td></tr></table></figure>
+<p>yield 使生成器函数执行暂停，将后面的表达式的值返回给生成器的调用者。它可以被认为是一个基于生成器的版本的return关键字。yield* 表达式用于委托给另一个generator 或可迭代对象。</p>
+<h2 id="循环-递归-迭代-遍历"><a href="#循环-递归-迭代-遍历" class="headerlink" title="循环 递归 迭代 遍历"></a><a href="https://segmentfault.com/q/1010000000199577" target="_blank" rel="noopener">循环 递归 迭代 遍历</a></h2><ul>
+<li>循环(loop) - 最基础的概念, 所有重复的行为</li>
+<li>递归(recursion) - 在函数内调用自身, 将复杂情况逐步转化成基本情况</li>
+<li>(数学)迭代(iterate) - 在多次循环中逐步接近结果</li>
+<li>(编程)迭代(iterate) - 按顺序访问线性结构中的每一项</li>
+<li>遍历(traversal) - 按规则访问非线性结构中的每一项</li>
+</ul>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="立即执行函数"><a href="#立即执行函数" class="headerlink" title="立即执行函数"></a><a href="http://blog.csdn.net/csdn_yudong/article/details/77431106" target="_blank" rel="noopener">立即执行函数</a></h3><p>函数声明和函数表达式的不同：<br>1.函数声明提升<br>2.函数表达式后面可以加括号立即调用该函数，函数声明不可以，只能以 fnName() 形式调用<br>而 () 、! 、+ 、- 、= 等运算符，都将函数声明转换成函数表达式</p>
+<h2 id="JS模块化"><a href="#JS模块化" class="headerlink" title="JS模块化"></a>JS模块化</h2><ul>
+<li><a href="http://www.ruanyifeng.com/blog/2012/10/javascript_module.html" target="_blank" rel="noopener">（一）模块的写法</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html" target="_blank" rel="noopener">（二）AMD规范</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html" target="_blank" rel="noopener">（三）require.js</a></li>
+</ul>
+<h3 id="commonjs"><a href="#commonjs" class="headerlink" title="commonjs"></a>commonjs</h3><p> 用全局性方法require() 加载模块</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var math = require(&apos;math&apos;); // 有一个math.js 用require() 加载</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var math = require(&apos;math&apos;);</span><br><span class="line">math.add(2,3); // 5</span><br><span class="line">//调用模块提供的方法</span><br></pre></td></tr></table></figure>
+<p> 调用时必须等math.js加载完，不是异步过程，不适用于浏览器端。</p>
+<p> 模块通过export来导出对外暴露的属性接口，在一个module里面没有通过 exports 暴露出来的变量都是相对于module私有的</p>
+<h3 id="AMD"><a href="#AMD" class="headerlink" title="AMD"></a>AMD</h3><p> 采用异步方式加载模块，模块的加载不影响它后面语句的运行。<br> 所有依赖这个模块的语句，都定义在一个回调函数中</p>
+<p> AMD也采用require()语句加载模块，但它要求两个参数：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">    require([module], callback);</span><br><span class="line"></span><br><span class="line">//第一个参数[module]，是一个数组，里面的成员就是要加载的模块</span><br><span class="line">//第二个参数callback，则是加载成功之后的回调函数。</span><br><span class="line"></span><br><span class="line">    require([&apos;math&apos;], function (math) &#123;</span><br><span class="line">        math.add(2, 3);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h2><p><strong>同步(synchronous)</strong>:等待当前操作完成才能进行下一个操作<br>(可以用多线程来解决)<br><strong>异步(asynchronous)</strong>:</p>
+<h2 id="零碎"><a href="#零碎" class="headerlink" title="零碎"></a>零碎</h2><ul>
+<li>NaN == NaN false 不等于它本身</li>
+<li>当你想测试一个变量是否有效值 和null比较 </li>
+<li>=== 严格相等 类型不同false </li>
+<li>|| 运算符 当左边结果true时 返回左边的值 否则返回右边的值<br>&lt;!– if (x == 10) x += 5</li>
+</ul>
+<p>如果传入的x是字符串’10’，x的结果会变成’105’。在后续运算中字符串’105’又可能被转型，从而引入隐蔽的错误。 –&gt;</p>
+<ul>
+<li><a href="http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_encapsulation.html" target="_blank" rel="noopener">Javascript 面向对象编程（一）：封装</a></li>
+<li>一个构建函数通常是大写字母开头，这样便于区分构建函数和普通函数。</li>
+<li><a href="https://codient.blogspot.com/2015/11/laying-out-table-eloquent-javascript.html" target="_blank" rel="noopener">Laying Out A table: Eloquent JavaScript</a></li>
+</ul>
+<!-- +
+```
+var a = new Array(10);
+console.log(a); //(10) [empty × 10]
+``` -->
+<ul>
+<li>undefined与空槽不同 length把空槽算进去</li>
+<li>同一个模块只能require一次 重复引用不会重复执行 如果module.exports 改变值不会 内键值对对应的值为对象</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/30/CS lab/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yanyuw">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yanyu's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/30/CS lab/" itemprop="url">CS lab</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-30T17:49:42+08:00">
+                2018-03-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>在学习数据结构的时候的一些零碎的笔记</strong></p>
+<h2 id="ADT-abstract-data-type-抽象数据类型"><a href="#ADT-abstract-data-type-抽象数据类型" class="headerlink" title="ADT(abstract data type):抽象数据类型"></a>ADT(abstract data type):抽象数据类型</h2><p>数据类型的定义和它的实现是分开的。（例子：开车。表面的操作与内在的执行是分开的，同样，软件表面的操作暴露，而内在代码没有 ）</p>
+<p><strong>数据结构是什么？</strong><br><a href="https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84" target="_blank" rel="noopener">数据结构</a>（data structure）是计算机中存储、组织数据的方式。</p>
+<h2 id="Queue-队列-："><a href="#Queue-队列-：" class="headerlink" title="Queue(队列)："></a>Queue(队列)：</h2><p>FIFO(first in first out) 队列只允许在后端（称为rear）进行插入操作，在前端（称为front）进行删除操作。<br>队列的操作方式和堆栈类似，唯一的区别在于队列只允许新数据在后端进行添加。<br> enqueue:插入<br> dequeue:删除</p>
+<p>##Stack（栈）：<br>LIFO(last in first out) 堆箱子一样，最后堆的箱子在最上面 （push/pop/top(peek)/isEmpty/size/）只能允许在链接串列或阵列的一端（称为堆叠顶端指标，英语：top）进行加入数据（英语：push）和输出数据（英语：pop）的运算。（例子：浏览网站时后退）top()是将指针置于堆栈顶部 注意堆栈满了（full）和空（empty）的情况</p>
+<h2 id="ProAbs-C-笔记："><a href="#ProAbs-C-笔记：" class="headerlink" title="ProAbs C++笔记："></a>ProAbs C++笔记：</h2><p>枚举类型<br>好处：</p>
+<ul>
+<li>C ++编译器对枚举类型进行了一些基本的检查。例如，如果没有类型转换，则不能将整数值分配给枚举变量，这有助于引起注意可能的错误，例如为枚举分配值超出范围</li>
+<li>使用枚举类型的￼Page Mode 程序更容易调试。编译器使枚举常量的名称可供调试器使用。</li>
+</ul>
+<p>标量类型（scalar type）：枚举类型，字符和各种整数表示形成一个更普通的类型类，称为标量类型。当在C ++表达式中使用标量类型的值时，编译器会自动将其转换为用于表示该值的整数。这个规则的效果是，你可以对任何标量类型的值执行与整数的操作相同的操作。</p>
+<p><strong>空指针</strong>:在很多指针应用程序中，能够在指针变量中存储一个特殊值，这个值是很有用的，这个特殊值表示变量事实上并不指向任何有效数据，至少目前是这样。这样一个指针变量被称为空指针，它的值被赋值为地址0.为此可以使用称为NULL的特殊常量。</p>
+<p>这个指针没有指向一块有意义的内存</p>
+<p><strong>record</strong>:即结构体</p>
+<p><strong>动态分配(Dynamic allocation)</strong>:(静态分配、自动分配、动态分配)程序在运行期中分配使用内存。<br><strong>堆(heap)</strong>: 用new操作符来从堆里分配内存、<br>如<code>int *ip = new int</code> 会返回已保留一个整数的堆中的内存地址。<br>要在用完后释放内存，防止内存不足。用<strong>delete</strong>来进行释放<br>如<code>delete ptr</code>、<code>delete[] arr</code></p>
+<p><strong>动态数组</strong>:动态数组的大小不确定，可根据数据多少调整<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">double *darray;</span><br><span class="line">darray = new double[n];</span><br></pre></td></tr></table></figure></p>
+<p>库函数(library functions)</p>
+<p>借口(interface)</p>
+<p><strong>库函数和头文件的区别和联系</strong>: 头文件具体实现</p>
+<p>头文件：文档；库函数：二进制文档 </p>
+<p>一个库文件均有一组头文件与其对应。</p>
+<p><strong>Vector</strong>: 能够存放任意类型的动态数组<br>边界检查：指在使用某一个变量前，用来检查该变量是否处在一个特定范围之内的过程。最常见的是数组的下标检查，来防止下标超出数组的范围而覆盖其他的数据。</p>
+<p>container classes 容器类<br>collection classes 集合类<br>parameterized classes 参数化类  template 模板</p>
+<p><strong>Lexicon</strong>:</p>
+<p><strong>递归</strong>:</p>
+<p>汉诺塔：</p>
+<p><strong>graphics.h</strong>: </p>
+<h2 id="wordladder"><a href="#wordladder" class="headerlink" title="wordladder"></a>wordladder</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Finding a word ladder between words w1 and w2:</span><br><span class="line">	Create an empty queue of stacks.queue&lt;stack&gt;</span><br><span class="line">  	Create/add a stack containing &#123;w1&#125; to the queue. </span><br><span class="line">  	While the queue is not empty:</span><br><span class="line">		Dequeue the partial-ladder stack from the front of the queue.</span><br><span class="line">		For each valid English word that is a &quot;neighbor&quot; (differs by 1 letter) </span><br><span class="line">		of the word on top of the stack:</span><br><span class="line">			If that neighbor word has not already been used in a ladder before: </span><br><span class="line">				If the neighbor word is w2:</span><br><span class="line">					Hooray! we have found a solution (and it is the stack you are working on in the queue).</span><br><span class="line">				Otherwise:</span><br><span class="line">					Create a copy of the current partial-ladder stack. </span><br><span class="line">					Put the neighbor word on top of the copy stack. </span><br><span class="line">					Add the copy stack to the end of the queue.</span><br></pre></td></tr></table></figure>
+<p>先把起点加到队列中, 然后每次将字典中与队首距离为1的字符串加进队列, 直到最后出队列的是终点字符串<br>一个个查看改变一个字符然后在字典中查看是否存在</p>
+<!-- 无序集合（Unordered Set）容器是一个存储唯一（Unique，即无重复）元素的关联容器（Associative container），容器中的元素无特别的次序关系。该容器允许基于值地快速元素检索。
+
+unordered_set基于哈希表，是无序的。std::unordered_map 就是以key来查找value而设计,不会根据key排序。 -->
+<p><strong>vector::erase()</strong>:从指定容器删除指定位置的元素或某段范围内的元素<br>调用erase（）函数后，vector后面的元素会<em>向前移位</em>，形成新的容器，这样原来指向删除元素的迭代器（_Where）就失效了。</p>
+<p><strong>头文件</strong>：<code>#include</code>语句有两种方式包含头文件，分别是使用双引号” “与左右尖括号&lt; &gt;。其区别是（对于不是使用完全文件路径名的）头文件的搜索顺序不同：</p>
+<p>使用双引号” “的头文件的搜索顺序：</p>
+<ul>
+<li>包含该#include语句的源文件所在目录；</li>
+<li>包含该#include语句的已经打开的头文件的逆序（因为头文件可以#include另一个头文件构成一个序列）；</li>
+<li>编译选项-I所指定的目录；</li>
+<li>环境变量INCLUDE所定义的目录。</li>
+</ul>
+<p>使用左右尖括号&lt; &gt;的头文件的搜索顺序：</p>
+<ul>
+<li>编译选项-I所指定的目录</li>
+<li>环境变量INCLUDE所定义的目录</li>
+</ul>
+<p>//？</p>
+<p><code>for(int a : list)</code><br>冒号表示迭代 即不断从数组的List里取其中的元素，</p>
+<p><strong>iterator</strong>:迭代器是一种设计模式，它是一个对象，它可以遍历并选择序列中的对象，而开发人员不需要了解该序列的底层结构。<br>&lt;!–<br>```<br>   Vector<vector<string>&gt; keys = map.keys(); // 得到所有的键构成的数组（每个键又是一个字符串数组）<br>    int randInt = randomInteger(0, keys.size() - 1);  //定义一个在0到键数组长度-1范围内的随机数<br>    Vector<string> window_key = keys[randInt]; // 得到这个随机的键<br>    int n = window_key.size(); //这个键的长度</string></vector<string></p>
+<pre><code>Vector&lt;string&gt; myStory; //开一个字符串数组
+myStory += window_key; //把这个随机的键加入数组
+
+for (int i = 0; i &lt; num - n; i++) { //循环生成剩下的num-n个字
+    string next_word = getRandomString(map[window_key]); //在map中通过键随机获取对应的值中的字符串
+    myStory.add(next_word);//把这个随机的字符串加入数组
+    window_key.remove(0);//删掉键的第一个元素
+    window_key.add(next_word); //增加下一个元素
+}
+
+cout &lt;&lt; &quot;... &quot;;
+printVector(myStory);
+cout &lt;&lt; &quot;...&quot; &lt;&lt; endl;
+</code></pre><p>``` –&gt;</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/11/Js模块化及webpack总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -383,7 +1012,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/11/CS lab/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/11/重构学而总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yanyuw">
@@ -402,7 +1031,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/11/CS lab/" itemprop="url">CS lab</a></h1>
+                <a class="post-title-link" href="/2018/03/11/重构学而总结/" itemprop="url">重构学而总结</a></h1>
         
 
         <div class="post-meta">
@@ -414,7 +1043,7 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-11T20:07:40+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-11T14:46:41+08:00">
                 2018-03-11
               </time>
             
@@ -437,8 +1066,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">笔记</span>
+                  <a href="/categories/总结/" itemprop="url" rel="index">
+                    <span itemprop="name">总结</span>
                   </a>
                 </span>
 
@@ -476,269 +1105,32 @@
       
         
           
-            <h2 id="3-5"><a href="#3-5" class="headerlink" title="3.5"></a>3.5</h2><p>ADT:数据类型的定义和它的实现是分开的。（例子：开车。表面的操作与内在的执行是分开的，同样，软件表面的操作暴露，而内在代码没有 ）<br>Queue(队列)：FIFO(first in first out) 队列只允许在后端（称为rear）进行插入操作，在前端（称为front）进行删除操作。<br>队列的操作方式和堆栈类似，唯一的区别在于队列只允许新数据在后端进行添加。<br> enqueue:插入<br> dequeue:删除<br>Stack（栈）：LIFO(last in first out) 堆箱子一样，最后堆的箱子在最上面 （push/pop/top(peek)/isEmpty/size/）只能允许在链接串列或阵列的一端（称为堆叠顶端指标，英语：top）进行加入数据（英语：push）和输出数据（英语：pop）的运算。（例子：浏览网站时后退）top()是将指针置于堆栈顶部 注意堆栈满了（full）和空（empty）的情况</p>
-<h2 id="3-8"><a href="#3-8" class="headerlink" title="3.8"></a>3.8</h2><p><strong>数据结构是什么？</strong><br><a href="https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84" target="_blank" rel="noopener">数据结构</a>（data structure）是计算机中存储、组织数据的方式。</p>
-<p>ProAbs C++：</p>
-<p>枚举类型<br>好处：</p>
-<ul>
-<li>C ++编译器对枚举类型进行了一些基本的检查。例如，如果没有类型转换，则不能将整数值分配给枚举变量，这有助于引起注意可能的错误，例如为枚举分配值超出范围</li>
-<li>使用枚举类型的程序更容易调试。编译器使枚举常量的名称可供调试器使用。</li>
-</ul>
-<p>标量类型（scalar type）：枚举类型，字符和各种整数表示形成一个更普通的类型类，称为标量类型。当在C ++表达式中使用标量类型的值时，编译器会自动将其转换为用于表示该值的整数。这个规则的效果是，你可以对任何标量类型的值执行与整数的操作相同的操作。</p>
-<h2 id="3-11"><a href="#3-11" class="headerlink" title="3.11"></a>3.11</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/26/JavaScript笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yanyuw">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="yanyu's">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/26/JavaScript笔记/" itemprop="url">JavaScript笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-26T16:12:20+08:00">
-                2018-02-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">in</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="数组Array常用方法"><a href="#数组Array常用方法" class="headerlink" title="数组Array常用方法"></a>数组Array常用方法</h2><h3 id="Array-prototype-pop"><a href="#Array-prototype-pop" class="headerlink" title="Array.prototype.pop()"></a>Array.prototype.pop()</h3><p>pop() 方法将删除 arrayObject 的最后一个元素，把数组长度减 1，<strong>并且返回它删除的元素的值</strong>。如果数组已经为空，则 pop() 不改变数组，并返回 undefined 值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arrayObject.pop()</span><br></pre></td></tr></table></figure></p>
-<h3 id="Array-prototype-unshift"><a href="#Array-prototype-unshift" class="headerlink" title="Array.prototype.unshift()"></a>Array.prototype.unshift()</h3><p>将一个或多个元素添加到数组的开头，并返回新数组的长度。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.unshift(element1, ..., elementN)</span><br></pre></td></tr></table></figure></p>
-<h3 id="Array-prototype-concat"><a href="#Array-prototype-concat" class="headerlink" title="Array.prototype.concat()"></a>Array.prototype.concat()</h3><p>方法用于合并两个或多个数组。此方法不会更改现有数组，而是<strong>返回一个新数组。</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var new_array = old_array.concat(value1[, value2[, ...[, valueN]]])</span><br></pre></td></tr></table></figure></p>
-<h3 id="Array-prototype-slice"><a href="#Array-prototype-slice" class="headerlink" title="Array.prototype.slice()"></a>Array.prototype.slice()</h3><p>可从已有的数组中返回选定的元素。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arrayObject.slice(start,end)</span><br></pre></td></tr></table></figure></p>
-<h3 id="Array-prototype-forEach"><a href="#Array-prototype-forEach" class="headerlink" title="Array.prototype.forEach()"></a>Array.prototype.forEach()</h3><p>返回新数组而不会改变原数组，且不会对空数组进行检测</p>
-<h3 id="Array-prototype-map"><a href="#Array-prototype-map" class="headerlink" title="Array.prototype.map()"></a>Array.prototype.map()</h3><p>对原数组的每个元素都按顺序执行一次callback函数，并返回每次执行函数的返回值所组成的新数组（包括undefined）</p>
-<p>**callback函数只会在有值的索引上被调用，没有赋过值或使用delete删除的索引则不会被调用<br>返回新数组而不会改变原数组，且不会对空数组进行检测</p>
-<h3 id="Array-prototype-filter"><a href="#Array-prototype-filter" class="headerlink" title="Array.prototype.filter()"></a>Array.prototype.filter()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array.filter(function(**currentValue**,index,arr), thisValue)</span><br></pre></td></tr></table></figure>
-<p>currentValue：当前元素的值<br>index：当前元素的索引值<br>返回新数组而不会改变原数组，且不会对空数组进行检测</p>
-<h3 id="Array-prototype-reduce"><a href="#Array-prototype-reduce" class="headerlink" title="Array.prototype.reduce()"></a>Array.prototype.reduce()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array.reduce(function(**total**, **currentValue**, currentIndex, arr), initialValue)</span><br></pre></td></tr></table></figure>
-<p>total：初始值 或计算结束后的返回值<br>currentValue：当前元素<br>currentIndex</p>
-<h3 id="Array-from"><a href="#Array-from" class="headerlink" title="Array.from()"></a>Array.from()</h3><p>可以将数组空元素设为undefined</p>
-<h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><ul>
-<li>在所有函数之外声明的变量，叫做<strong>全局变量</strong> 它可被当前文档中的任何其他代码所访问。</li>
-<li>在函数内部声明的变量，叫做<strong>局部变量</strong>，只能在该函数内部访问。</li>
-</ul>
-<p>用 var 或 let 声明的且未赋初值的变量，值会被设定为 undefined。数值类型环境中 undefined 值会被转换为 NaN。<br>const创建只读的常量，必须被初始化为某个值。（对象属性不受保护，仍可以通过赋值改变）</p>
-<h3 id="var"><a href="#var" class="headerlink" title="var"></a>var</h3><p>声明顺序没有关系，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(&quot;The value of c is &quot; + c);  // The value of c is undefined</span><br><span class="line">var c;</span><br></pre></td></tr></table></figure></p>
-<h3 id="let"><a href="#let" class="headerlink" title="let"></a>let</h3><p>与顺序有关，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(&quot;The value of x is &quot; + x); // Uncaught ReferenceError: x is not defined </span><br><span class="line">let x;</span><br></pre></td></tr></table></figure></p>
-<h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h2><p>__proto<strong>（隐式原型）与prototype（显式原型）<br>一个对象的隐式原型指向构造该对象的构造函数的原型<br>1.对象有属性</strong>proto<strong>,指向该对象的构造函数的原型对象。<br>2.方法除了有属性</strong>proto__,还有属性prototype，prototype指向该方法的原型对象。</p>
-<p>所有实例对象需要共享的属性和方法，都放在prototype对象里面；那些不需要共享的属性和方法，就放在构造函数里面。</p>
-<p>实例对象一旦创建，将自动引用prototype对象的属性和方法。也就是说，实例对象的属性和方法，分成两种，一种是本地的，另一种是引用的。</p>
-<p>关于原型：</p>
-<ul>
-<li><a href="http://www.ruanyifeng.com/blog/2011/06/designing_ideas_of_inheritance_mechanism_in_javascript.html" target="_blank" rel="noopener">JavaScript继承机制的设计思想</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/23090041?refer=study-fe" target="_blank" rel="noopener">什么是JS原型链</a></li>
-</ul>
-<h2 id="构造函数（constructor）"><a href="#构造函数（constructor）" class="headerlink" title="构造函数（constructor）"></a>构造函数（constructor）</h2><p>所谓”构造函数”，其实就是一个普通函数，但是内部使用了<strong>this</strong>变量。对构造函数使用<strong>new</strong>运算符，就能生成实例，并且<strong>this</strong>变量会绑定在实例对象上。<br>构造函数不需要返回值。<br>使用new来创建对象(调用构造函数)时，如果return的是非对象(数字、字符串、布尔类型等)会忽而略返回值;如果return的是对象，则返回该对象。（Js lab 第2题）</p>
-<h2 id="Object-defineProperty"><a href="#Object-defineProperty" class="headerlink" title="Object.defineProperty()"></a>Object.defineProperty()</h2><p>方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object.defineProperty(obj, prop, descriptor)</span><br></pre></td></tr></table></figure></p>
-<p>obj:<br>要在其上定义属性的对象。<br>prop:<br>要定义或修改的属性的名称。<br>descriptor:<br>将被定义或修改的属性描述符。</p>
-<p>默认情况下，使用Object.defineProperty()添加的属性值是<strong>不可变</strong>(不可配置属性)的。<br>descriptor的参数：<br><strong>注意</strong> 在调用Object.defineProperty()方法时，如果不指定， configurable， enumerable， writable特性的默认值都是false,这跟对于直接在对象上定义的属性，这个特性默认值为为 true 并不冲突<br><a href="http://imweb.io/topic/56d40adc0848801a4ba198ce" target="_blank" rel="noopener">不会Object.defineProperty你就out了</a></p>
-<h2 id="Object-getPrototypeOf"><a href="#Object-getPrototypeOf" class="headerlink" title="Object.getPrototypeOf()"></a>Object.getPrototypeOf()</h2><p>方法返回指定对象的原型（内部[[Prototype]]属性的值） 如果没有继承属性 则返回null<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object.getPrototypeOf(object)</span><br></pre></td></tr></table></figure></p>
-<p>obj：要返回其原型的对象</p>
-<p><code>Object.getPrototypeOf( Object ) === Function.prototype; //true</code></p>
-<h2 id="Object-create"><a href="#Object-create" class="headerlink" title="Object.create()"></a>Object.create()</h2><p>方法会使用指定的原型对象及其属性去创建一个新的对象。并返回在指定原型对象上添加新属性后的对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object.create(proto[, propertiesObject])</span><br></pre></td></tr></table></figure></p>
-<p>proto:<br>新创建对象的原型对象。<br>propertiesObject:<br>可选。如果没有指定为 undefined，则是要添加到新创建对象的可枚举属性（即其自身定义的属性，而不是其原型链上的枚举属性）对象的属性描述符以及相应的属性名称。这些属性对应Object.defineProperties()的第二个参数。</p>
-<h2 id="apply-call"><a href="#apply-call" class="headerlink" title="apply call"></a>apply call</h2><p>实现对象继承 为了动态改变this<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">obj.call(thisObj, arg1, arg2, ...);</span><br><span class="line">obj.apply(thisObj, [arg1, arg2, ...]);</span><br></pre></td></tr></table></figure></p>
+            <h2 id="页面内边距"><a href="#页面内边距" class="headerlink" title="页面内边距"></a>页面内边距</h2><p><code>*{
+    padding: 0;
+    margin: 0;
+}</code></p>
+<p>要用css清除浏览器对页面的默认外边距、内边距。<br>此处*指网页里的所有元素。</p>
+<h2 id="更改默认的css盒子模型"><a href="#更改默认的css盒子模型" class="headerlink" title="更改默认的css盒子模型"></a>更改默认的css盒子模型</h2><p><code>box-sizing: border-box;</code></p>
+<p>对div设置padding时会把div的宽高撑大。设置css样式box-sizing: border-box，元素的内边距和边框不再会增加它的宽度。</p>
+<p>解释：</p>
 <blockquote>
-<p>猫吃鱼，狗吃肉，奥特曼打小怪兽。<br>有天狗想吃鱼了<br>猫.吃鱼.call(狗，鱼)<br>狗就吃到鱼了<br>猫成精了，想打怪兽<br>奥特曼.打小怪兽.call(猫，小怪兽) </p>
+<p>box-sizing 属性可以被用来调整这些表现:</p>
+<ul>
+<li><code>content-box</code>  是默认值。如果你设置一个元素的宽为100px，那么这个元素的内容区会有100px宽，并且任何边框和内边距的宽度都会被增加到最后绘制出来的元素宽度中。</li>
+<li><code>border-box</code>  告诉浏览器去理解你设置的边框和内边距的值是包含在width内的。也就是说，如果你将一个元素的width设为100px,那么这100px会包含其它的border和padding，内容区的实际宽度会是width减去border + padding的计算值。大多数情况下这使得我们更容易的去设定一个元素的宽高。</li>
+</ul>
 </blockquote>
-<h2 id="Function-prototype-bind"><a href="#Function-prototype-bind" class="headerlink" title="Function.prototype.bind()"></a>Function.prototype.bind()</h2><p>创建一个新的函数, 当被调用时，将其this关键字设置为提供的值，在调用新函数时，在任何提供之前提供一个给定的参数序列。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fun.bind(thisArg[, arg1[, arg2[, ...]]])</span><br></pre></td></tr></table></figure></p>
-<p>thisArg：当绑定函数被调用时，该参数会作为原函数运行时的 this 指向。当使用new 操作符调用绑定函数时，该参数无效。<br>arg1, arg2, …：当绑定函数被调用时，这些参数将置于实参之前传递给被绑定的方法。</p>
-<h2 id="delete操作符"><a href="#delete操作符" class="headerlink" title="delete操作符"></a>delete操作符</h2><p>用于删除对象的某个属性。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">delete object.property </span><br><span class="line">delete object[&apos;property&apos;]</span><br></pre></td></tr></table></figure></p>
-<p>返回值：对于所有情况都是true，除非属性是一个自己的不可配置属性，在这种情况下，非严格模式返回 false。</p>
-<ul>
-<li>如果你删除的属性在对象上不存在，那么delete将不会起作用，但仍会返回true</li>
-<li>如果 delete 操作符删除成功，则被删除的属性将从所属的对象上彻底消失。然后，如果该对象的原型链上有一个同名属性，则该对象会从原型链上继承该同名属性。（也就是说delete操作只会在自身的属性上起作用）</li>
-<li>当一个属性被设置为不可设置，delete操作将不会有任何效果，并且会返回false。如Object.defineProperty(obj, prop, descriptor)</li>
-<li>当你删除一个数组元素时，数组的 length 属性并不会变小。即便你删除了数组的最后一个元素也是如此。</li>
-</ul>
-<h2 id="String-prototype-split"><a href="#String-prototype-split" class="headerlink" title="String.prototype.split()"></a>String.prototype.split()</h2><p>使用指定的分隔符字符串将一个String对象分割成字符串数组，以将字符串分隔为子字符串，以确定每个拆分的位置。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">str.split([separator[, limit]])</span><br><span class="line">//如果空字符串(&quot;&quot;)被用作分隔符，则字符串会在每个字符之间分割。</span><br></pre></td></tr></table></figure></p>
-<p>separator:<br>指定表示每个拆分应发生的点的字符串。可以是一个字符串或正则表达式。 如果纯文本分隔符包含多个字符，则必须找到整个字符串来表示分割点。如果在str中省略或不出现分隔符，则返回的数组包含一个由整个字符串组成的元素。<br>示例： <code>Webkit Moz O ms Khtml&quot;.split( &quot; &quot; )   // [&quot;Webkit&quot;, &quot;Moz&quot;, &quot;O&quot;, &quot;ms&quot;, &quot;Khtml&quot;]</code></p>
-<h2 id="可枚举属性-不可枚举属性"><a href="#可枚举属性-不可枚举属性" class="headerlink" title="可枚举属性 不可枚举属性"></a>可枚举属性 不可枚举属性</h2><ul>
-<li><a href="https://www.w3cplus.com/javascript/how-do-i-enumerate-the-properties-of-a-javascript-object.html" target="_blank" rel="noopener">对象属性的枚举</a></li>
-</ul>
-<p>如果使用直接赋值的方式创建对象的属性，则这个属性的enumerable为true</p>
-<ul>
-<li><a href="https://robin-front.github.io/2017/01/13/how-to-enumerate-object-properties/" target="_blank" rel="noopener">js遍历Object对象可枚举属性、不可枚举属性、原型链属性和自身属性</a></li>
-</ul>
-<h2 id="Object-keys"><a href="#Object-keys" class="headerlink" title="Object.keys()"></a>Object.keys()</h2><p>返回一个由一个给定对象的自身可枚举属性组成的数组，数组中属性名的排列顺序和使用 for…in 循环遍历该对象时返回的顺序一致 （两者的主要区别是 for-in 循环还会枚举其原型链上的属性）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object.keys(obj)</span><br></pre></td></tr></table></figure></p>
-<!-- ## 箭头函数
- -->
-<!-- 
-## Map
-保存键值对。任何值(对象或者原始值) 都可以作为一个键或一个值。
-
-> 键值对:Key-Value
-> 键：就是存的值的编号
-> 值：就是要存放的数据 -->
-<h2 id="扩展运算符…"><a href="#扩展运算符…" class="headerlink" title="扩展运算符…"></a>扩展运算符…</h2><p>将一个数组转为用逗号分隔的参数序列。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myFunction(...iterableObj);</span><br></pre></td></tr></table></figure>
-<h2 id="迭代器和生成器"><a href="#迭代器和生成器" class="headerlink" title="迭代器和生成器"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Iterators_and_Generators" target="_blank" rel="noopener">迭代器和生成器</a></h2><h3 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h3><p>迭代器是一个对象，它提供了一个next() 方法，用来返回序列中的下一项。这个方法返回包含两个属性：done和 value。</p>
-<h3 id="生成器generator"><a href="#生成器generator" class="headerlink" title="生成器generator"></a>生成器generator</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function*  // 生成一个生成器函数</span><br></pre></td></tr></table></figure>
-<p>yield 使生成器函数执行暂停，将后面的表达式的值返回给生成器的调用者。它可以被认为是一个基于生成器的版本的return关键字。yield* 表达式用于委托给另一个generator 或可迭代对象。</p>
-<h2 id="循环-递归-迭代-遍历"><a href="#循环-递归-迭代-遍历" class="headerlink" title="循环 递归 迭代 遍历"></a><a href="https://segmentfault.com/q/1010000000199577" target="_blank" rel="noopener">循环 递归 迭代 遍历</a></h2><ul>
-<li>循环(loop) - 最基础的概念, 所有重复的行为</li>
-<li>递归(recursion) - 在函数内调用自身, 将复杂情况逐步转化成基本情况</li>
-<li>(数学)迭代(iterate) - 在多次循环中逐步接近结果</li>
-<li>(编程)迭代(iterate) - 按顺序访问线性结构中的每一项</li>
-<li>遍历(traversal) - 按规则访问非线性结构中的每一项</li>
-</ul>
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="立即执行函数"><a href="#立即执行函数" class="headerlink" title="立即执行函数"></a><a href="http://blog.csdn.net/csdn_yudong/article/details/77431106" target="_blank" rel="noopener">立即执行函数</a></h3><p>函数声明和函数表达式的不同：<br>1.函数声明提升<br>2.函数表达式后面可以加括号立即调用该函数，函数声明不可以，只能以 fnName() 形式调用<br>而 () 、! 、+ 、- 、= 等运算符，都将函数声明转换成函数表达式</p>
-<h2 id="JS模块化"><a href="#JS模块化" class="headerlink" title="JS模块化"></a>JS模块化</h2><ul>
-<li><a href="http://www.ruanyifeng.com/blog/2012/10/javascript_module.html" target="_blank" rel="noopener">（一）模块的写法</a></li>
-<li><a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html" target="_blank" rel="noopener">（二）AMD规范</a></li>
-<li><a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html" target="_blank" rel="noopener">（三）require.js</a></li>
-</ul>
-<h3 id="commonjs"><a href="#commonjs" class="headerlink" title="commonjs"></a>commonjs</h3><p> 用全局性方法require() 加载模块</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var math = require(&apos;math&apos;); // 有一个math.js 用require() 加载</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var math = require(&apos;math&apos;);</span><br><span class="line">math.add(2,3); // 5</span><br><span class="line">//调用模块提供的方法</span><br></pre></td></tr></table></figure>
-<p> 调用时必须等math.js加载完，不是异步过程，不适用于浏览器端。</p>
-<p> 模块通过export来导出对外暴露的属性接口，在一个module里面没有通过 exports 暴露出来的变量都是相对于module私有的</p>
-<h3 id="AMD"><a href="#AMD" class="headerlink" title="AMD"></a>AMD</h3><p> 采用异步方式加载模块，模块的加载不影响它后面语句的运行。<br> 所有依赖这个模块的语句，都定义在一个回调函数中</p>
-<p> AMD也采用require()语句加载模块，但它要求两个参数：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">    require([module], callback);</span><br><span class="line"></span><br><span class="line">//第一个参数[module]，是一个数组，里面的成员就是要加载的模块</span><br><span class="line">//第二个参数callback，则是加载成功之后的回调函数。</span><br><span class="line"></span><br><span class="line">    require([&apos;math&apos;], function (math) &#123;</span><br><span class="line">        math.add(2, 3);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure></p>
-<h2 id="零碎"><a href="#零碎" class="headerlink" title="零碎"></a>零碎</h2><ul>
-<li>NaN == NaN false 不等于它本身</li>
-<li>当你想测试一个变量是否有效值 和null比较 </li>
-<li>=== 严格相等 类型不同false </li>
-<li>|| 运算符 当左边结果true时 返回左边的值 否则返回右边的值<br>&lt;!– if (x == 10) x += 5</li>
-</ul>
-<p>如果传入的x是字符串’10’，x的结果会变成’105’。在后续运算中字符串’105’又可能被转型，从而引入隐蔽的错误。 –&gt;</p>
-<ul>
-<li><a href="http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_encapsulation.html" target="_blank" rel="noopener">Javascript 面向对象编程（一）：封装</a></li>
-<li>一个构建函数通常是大写字母开头，这样便于区分构建函数和普通函数。</li>
-<li><a href="https://codient.blogspot.com/2015/11/laying-out-table-eloquent-javascript.html" target="_blank" rel="noopener">Laying Out A table: Eloquent JavaScript</a></li>
-</ul>
-<!-- +
-```
-var a = new Array(10);
-console.log(a); //(10) [empty × 10]
-``` -->
-<ul>
-<li>undefined与空槽不同 length把空槽算进去</li>
-</ul>
+<p>我觉得将所有的元素的box-sizing都设为border-box 能更好的区别margin和padding属性。</p>
+<h2 id="并排同行显示"><a href="#并排同行显示" class="headerlink" title="并排同行显示"></a>并排同行显示</h2><p><code>display:inline-block</code></p>
+<p>inline-block可以简单理解成inline+block，既可以设置width和height（block），又可以行内排列（inline）</p>
+<p>用它来代替float 更加简单 也能实现相同的效果</p>
+<h2 id="元素垂直对齐方式"><a href="#元素垂直对齐方式" class="headerlink" title="元素垂直对齐方式"></a>元素垂直对齐方式</h2><p><code>vertical-align: top/middle/bottom</code></p>
+<p>即把元素的顶端与行中最高元素的顶端对齐/把元素放置在父元素的中部/把元素的顶端与行中最低的元素的顶端对齐。</p>
+<h2 id="同时设置背景颜色和背景图"><a href="#同时设置背景颜色和背景图" class="headerlink" title="同时设置背景颜色和背景图"></a>同时设置背景颜色和背景图</h2><p><code>background:url(/*背景图片*/)  #000/*背景颜色*/;</code><br>div可以同时设置背景图片和背景颜色<br>图片位于颜色之上，若div宽长小于背景图，则最终看到的是背景图，若超出，则在背景图没覆盖到的地方显示背景颜色</p>
+<h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><p><code>&lt;img src=&quot;&quot;&gt;</code><br><code>background:url()</code></p>
+<p>两种方式img是html标签，background是css样式。<br>插入图片最好还是用本地的吧，上传到图床结果超时被删了orz</p>
+<h2 id="div与span的区别"><a href="#div与span的区别" class="headerlink" title="div与span的区别"></a>div与span的区别</h2><p>div为块元素 而span是行内元素<br>在不对两者设置css宽高时，div占用的位置是一行，而span占用的是文字内容的宽度。</p>
+<p>虽然没有查到为什么，但在对两者设置左边框时，发现div的边框高度会比span的边框高度要长，而span的边框高度和文字高度一样。</p>
 
           
         
@@ -895,173 +1287,6 @@ console.log(a); //(10) [empty × 10]
 <h2 id="零碎"><a href="#零碎" class="headerlink" title="零碎"></a>零碎</h2><ul>
 <li>相同的部分用同一个class写样式 不同的再另一class写</li>
 </ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/30/重构学而总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yanyuw">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="yanyu's">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/30/重构学而总结/" itemprop="url">重构学而总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-30T23:39:00+08:00">
-                2017-11-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">in</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/总结/" itemprop="url" rel="index">
-                    <span itemprop="name">总结</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="页面内边距"><a href="#页面内边距" class="headerlink" title="页面内边距"></a>页面内边距</h2><p><code>*{
-    padding: 0;
-    margin: 0;
-}</code></p>
-<p>要用css清除浏览器对页面的默认外边距、内边距。<br>此处*指网页里的所有元素。</p>
-<h2 id="更改默认的css盒子模型"><a href="#更改默认的css盒子模型" class="headerlink" title="更改默认的css盒子模型"></a>更改默认的css盒子模型</h2><p><code>box-sizing: border-box;</code></p>
-<p>对div设置padding时会把div的宽高撑大。设置css样式box-sizing: border-box，元素的内边距和边框不再会增加它的宽度。</p>
-<p>解释：</p>
-<blockquote>
-<p>box-sizing 属性可以被用来调整这些表现:</p>
-<ul>
-<li><code>content-box</code>  是默认值。如果你设置一个元素的宽为100px，那么这个元素的内容区会有100px宽，并且任何边框和内边距的宽度都会被增加到最后绘制出来的元素宽度中。</li>
-<li><code>border-box</code>  告诉浏览器去理解你设置的边框和内边距的值是包含在width内的。也就是说，如果你将一个元素的width设为100px,那么这100px会包含其它的border和padding，内容区的实际宽度会是width减去border + padding的计算值。大多数情况下这使得我们更容易的去设定一个元素的宽高。</li>
-</ul>
-</blockquote>
-<p>我觉得将所有的元素的box-sizing都设为border-box 能更好的区别margin和padding属性。</p>
-<h2 id="并排同行显示"><a href="#并排同行显示" class="headerlink" title="并排同行显示"></a>并排同行显示</h2><p><code>display:inline-block</code></p>
-<p>inline-block可以简单理解成inline+block，既可以设置width和height（block），又可以行内排列（inline）</p>
-<p>用它来代替float 更加简单 也能实现相同的效果</p>
-<h2 id="元素垂直对齐方式"><a href="#元素垂直对齐方式" class="headerlink" title="元素垂直对齐方式"></a>元素垂直对齐方式</h2><p><code>vertical-align: top/middle/bottom</code></p>
-<p>即把元素的顶端与行中最高元素的顶端对齐/把元素放置在父元素的中部/把元素的顶端与行中最低的元素的顶端对齐。</p>
-<h2 id="同时设置背景颜色和背景图"><a href="#同时设置背景颜色和背景图" class="headerlink" title="同时设置背景颜色和背景图"></a>同时设置背景颜色和背景图</h2><p><code>background:url(/*背景图片*/)  #000/*背景颜色*/;</code><br>div可以同时设置背景图片和背景颜色<br>图片位于颜色之上，若div宽长小于背景图，则最终看到的是背景图，若超出，则在背景图没覆盖到的地方显示背景颜色</p>
-<h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><p><code>&lt;img src=&quot;&quot;&gt;</code><br><code>background:url()</code></p>
-<p>两种方式img是html标签，background是css样式。<br>插入图片最好还是用本地的吧，上传到图床结果超时被删了orz</p>
-<h2 id="div与span的区别"><a href="#div与span的区别" class="headerlink" title="div与span的区别"></a>div与span的区别</h2><p>div为块元素 而span是行内元素<br>在不对两者设置css宽高时，div占用的位置是一行，而span占用的是文字内容的宽度。</p>
-<p>虽然没有查到为什么，但在对两者设置左边框时，发现div的边框高度会比span的边框高度要长，而span的边框高度和文字高度一样。</p>
 
           
         
@@ -1359,134 +1584,6 @@ console.log(a); //(10) [empty × 10]
 <hr>
 <h2 id="引用css"><a href="#引用css" class="headerlink" title="引用css"></a>引用css</h2><p>在head中<br><code>&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;文件名&quot;&gt;</code></p>
 <hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/29/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yanyuw">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="yanyu's">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/29/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-29T22:55:32+08:00">
-                2017-11-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
           
         
